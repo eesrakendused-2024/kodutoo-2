@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="typer.js" defer></script>
     <title>Typer</title>
 </head>
 <body>
     <div id="name">
-        <label for="nameValue">Palun sisesta oma nimi</label>
+        <label for="nameValue">Sinu nimi</label>
         <input type="text" id="nameValue">
         <label for="startingWordLength">Esimese sõna pikkus</label>
-        <input type="number" id="startingWordLength" max="31" value="3">
+        <input type="number" id="startingWordLength" max="31" value="2">
         <label for="wordsInGame">Sõnade arv mängus</label>
-        <input type="number" id="wordsInGame"max="31" value="5">
+        <input type="number" id="wordsInGame"max="31" value="1">
         <input type="button" value="Mängi" id="submitName">
-        <div id="error">Esimese sona pikkus ja sonu mangus summa ei saa uletada 31te</div>
+        <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
     </div>
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
@@ -28,7 +31,18 @@
         <h1>Mängu info</h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
-    
+    <button id="myBtn">Results</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Tulemused</h1>
+            <div id="results"></div>
+        </div>
+    </div>
+        <select id="fontSelector">
+            <option value="Roboto">Roboto</option>
+            <option value="Open Sans">Open Sans</option>
+            <option value="Arial">Arial</option>
+        </select> 
 </body>
 </html>
