@@ -1,18 +1,18 @@
 # kodutoo-2
 Täiusta tunnis loodud typer'i rakendust.
-
+## Typer asub siin: https://greeny.cs.tlu.ee/~emmodla/eesrakendused/typer/typer.html
 Tähtaeg: 05.05.2024 23:59
 
 # Kõik nõuded täidetud, siis 20 punkti.
 
-1. Kasuta veebilehel mõnda Google fonti: https://fonts.google.com/
+~~1. Kasuta veebilehel mõnda Google fonti: https://fonts.google.com/~~
 2. Tulemused peavad tulema välja nupule vajutades ja minema peitu x vajutades. Võimalus kasutada tavalist modalit või sidebari. https://www.w3schools.com/howto/howto_css_modals.asp
-3. Kuva tulemused paremini välja, kui praegu. Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne).
-4. Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti: https://www.typingpal.com/en/blog/good-typing-speed
-5. Teha rakendus paremini kasutatavaks ka mobiilivaatest kasutades media query't: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
-6. Muuda lehe CSS-i vastavalt oma soovidele muutes ära kõik praegu rakenduses kasutusel olevad värvid, teksti suurused ja elementide mõõtmed. Ideid leiad siit: https://www.w3schools.com/css/default.asp
+3. Kuva tulemused paremini välja, kui praegu. Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne). **html tabel i guess?**
+4. Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti: https://www.typingpal.com/en/blog/good-typing-speed **if-else tekst äkki? kui üldse ei taha siis võib lihtsalt graafiku teha ka eesti keelest ja kui üldse ei taha siis screen sealt lehe pealt**
+5. Teha rakendus paremini kasutatavaks ka mobiilivaatest kasutades media query't: https://www.w3schools.com/css/css_rwd_mediaqueries.asp **(skull_emoji)**
+6. Muuda lehe CSS-i vastavalt oma soovidele muutes ära kõik praegu rakenduses kasutusel olevad värvid, teksti suurused ja elementide mõõtmed. Ideid leiad siit: https://www.w3schools.com/css/default.asp **lmao võiks teha minecraft themed võ midagi XD**
 7. Leia moodus, kuidas kasutada CSS-is vähemalt 5-t erinevat pseudo class-i: https://www.w3schools.com/css/css_pseudo_classes.asp
-8. Lisa omaltpoolt veel üks feature, mida hetkel rakenduses pole.
+8. Lisa omaltpoolt veel üks feature, mida hetkel rakenduses pole. **(skull_emoji)x2**
 
 ### GitHub'i töövoog kodutöö esitamiseks
 
