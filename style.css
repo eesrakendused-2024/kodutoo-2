@@ -114,14 +114,16 @@ body {
 
 #name input {
     height: 50px;
-    font-size: 38px;
+    font-size: 36px;
     min-width: 300px;
     margin: 10px;
+    border-radius: 20px;
+    padding: 0 10px 0 10px;
 }
 
 #name label {
     color:var(--purple);
-    font-size: 1.9em;
+    font-size: 2em;
     margin-top: 20px;
 }
 
