@@ -1,5 +1,8 @@
 # Kodutöö 2 - Typer
 
+## Link greeny-sse
+http://greeny.cs.tlu.ee/~liimets/eesrakendused/typer2/typer.html
+
 ## Google Font
 Jersey 20 - https://fonts.google.com/specimen/Jersey+20?query=jersey
 
