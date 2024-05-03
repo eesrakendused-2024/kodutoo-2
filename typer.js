@@ -112,29 +112,20 @@ class Typer{
         let wordsPerMinImg = "";
         let wordsPerMin = ((this.chars / ((this.endTime - this.startTime) / 1000)) * 60).toFixed(0);
 
-        if (40 >= wordsPerMin >= 49) {
+        if (wordsPerMin >= 40 && wordsPerMin <= 49) {
             wordsPerMinImg = "images/average.jpg";
-        } 
-
-        else if (50 >= wordsPerMin >= 59) {
+        } else if (wordsPerMin >= 50 && wordsPerMin <= 59) {
             wordsPerMinImg = "images/above_average.jpg";
-        }
-
-        else if (60 >= wordsPerMin >= 69) {
+        } else if (wordsPerMin >= 60 && wordsPerMin <= 69) {
             wordsPerMinImg = "images/productive.jpg";
-        }
-
-        else if (70 >= wordsPerMin >= 120) {
+        } else if (wordsPerMin >= 70 && wordsPerMin <= 120) {
             wordsPerMinImg = "images/high.jpg";
-        }
-
-        else if (120 < wordsPerMin) {
+        } else if (wordsPerMin > 120) {
             wordsPerMinImg = "images/competitive.jpg";
+        } else {
+            wordsPerMinImg = "images/halb.gif";
         }
-
-        else {
-            wordsPerMinImg = "images/halb.gif"
-        }
+        
         let htmlContent = this.name + ", sinu aeg oli: " + ((this.endTime - this.startTime) / 1000).toFixed(2) + " sekundit.";
         htmlContent += '<br><img src="' + wordsPerMinImg + '" alt="typing image">';
         $('#score').html(htmlContent);

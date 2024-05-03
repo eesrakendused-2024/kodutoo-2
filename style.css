@@ -1,146 +1,213 @@
+/* Default styles */
+
 body {
-  margin: 0;
-  padding: 0;
+margin: 0;
+padding: 0;
 }
 
 #container {
-  width: 100%;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: beige;
-  font-size: 3em;
+width: 100%;
+height: 70vh;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+background-color: beige;
+font-size: 3em;
 }
 
 #info {
-  width: 100%;
-  text-align: center;
-  background-color: lightblue;
+width: 100%;
+text-align: center;
+background-color: lightblue;
 }
 
 #restart {
-  background-color: black;
-  color: white;
-  font-size: 32px;
-  border-radius: 32px;
-  padding: 5px 25px;
-  margin-top: 10px;
+background-color: black;
+color: white;
+font-size: 32px;
+border-radius: 32px;
+padding: 5px 25px;
+margin-top: 10px;
 }
 
 #name {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+position: absolute;
+width: 100vw;
+height: 100vh;
+background-color: black;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 }
 
 #name input {
-  height: 50px;
-  font-size: 38px;
-  min-width: 300px;
-  margin: 10px;
+height: 50px;
+font-size: 38px;
+min-width: 300px;
+margin: 10px;
 }
 
 #name label {
-  color: white;
-  font-size: 1.9em;
-  margin-top: 20px;
+color: white;
+font-size: 1.9em;
+margin-top: 20px;
 }
 
-#submitName, #myBtn{
-  height: 60px !important;
-  border-radius: 25px;
-  padding: 5px;
+#submitName,
+#myBtn {
+height: 60px !important;
+border-radius: 25px;
+padding: 5px;
 }
 
 #submitName:hover {
-  opacity: 90%;
+opacity: 90%;
 }
 
 #error {
-  display: none;
-  color: red;
-  font-size: 2.3em;
+display: none;
+color: red;
+font-size: 2.3em;
 }
 
 /* Modal for results */
 
 /* The Modal (background) */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: auto;
-  border: 1px solid #888;
-  width: 60%; 
-  height: 60%;
-  text-align: center;
+background-color: #fefefe;
+margin: 15% auto;
+padding: auto;
+border: 1px solid #888;
+width: 60%;
+height: 60%;
+text-align: center;
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  margin: 10px;
-  margin-top: 4px;
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+margin: 10px;
+margin-top: 4px;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+color: black;
+text-decoration: none;
+cursor: pointer;
 }
 
 /* Center the table and its contents */
 #results {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 table {
-  text-align: center;
+text-align: center;
 }
 
 th,
 td {
-  padding: 10px;
+padding: 10px;
 }
 
 /* Center the modal button */
 #modalButtonContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; /* Adjust margin as needed */
+display: flex;
+justify-content: center;
+margin-top: 20px; 
 }
 
 #myBtn {
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid rgb(202, 146, 72);
-  text-decoration: none;
-  border-radius: 32px;
-  transition: all 0.24s ease-out;
+padding: 8px 16px;
+background: transparent;
+border: 1px solid rgb(202, 146, 72);
+text-decoration: none;
+border-radius: 32px;
+transition: all 0.24s ease-out;
+}
+
+/*  Media Queries  */
+
+/*  protrait  */
+@media (max-width: 767px) {
+
+  #container {
+    height: auto; 
+  }
+
+  #info {
+    font-size: 2em; 
+  }
+
+  #restart {
+    font-size: 24px; 
+  }
+
+  #name {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  #name input {
+    font-size: 28px;
+    min-width: auto; 
+  }
+
+  #name label {
+    font-size: 1.5em; 
+  }
+
+  #submitName, #myBtn {
+    height: 50px !important;
+  }
+
+  #modalButtonContainer {
+    margin-top: 10px; 
+  }
+
+  #myBtn {
+    padding: 5px 12px; 
+    font-size: 16px; 
+  }
+}
+
+/*  landscape */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #name {
+    width: 100%;
+    height: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
+  .modal-content {
+    height: 100%;
+  }
 }
