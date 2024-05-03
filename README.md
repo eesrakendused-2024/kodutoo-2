@@ -5,9 +5,9 @@ Tähtaeg: 05.05.2024 23:59
 
 # Kõik nõuded täidetud, siis 20 punkti.
 
-1. ~~ Kasuta veebilehel mõnda Google fonti: https://fonts.google.com/~~
+1. ~~Kasuta veebilehel mõnda Google fonti: https://fonts.google.com/~~
 2. ~~Tulemused peavad tulema välja nupule vajutades ja minema peitu x vajutades. Võimalus kasutada tavalist modalit või sidebari. https://www.w3schools.com/howto/howto_css_modals.asp~~
-3. ~~ Kuva tulemused paremini välja, kui praegu. Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne). **html tabel i guess?**~~
+3. ~~Kuva tulemused paremini välja, kui praegu. Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne). **html tabel i guess?**~~
 
 4. Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti: https://www.typingpal.com/en/blog/good-typing-speed **if-else tekst äkki? kui üldse ei taha siis võib lihtsalt graafiku teha ka eesti keelest ja kui üldse ei taha siis screen sealt lehe pealt**
 
