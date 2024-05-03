@@ -86,11 +86,16 @@ class Typer{
 
     shortenWord(keypressed){
         //console.log(keypressed);
+        this.chars = 0;
+        for(let i = 0; i < this.wordsInGame; i++){
+            this.chars = this.chars + this.startingWordLength + i;
+            console.log(this.chars);
+        }
 
         if(this.word.charAt(0) != keypressed){
-            document.getElementById('container').style.backgroundColor = "lightpink";
+            document.getElementById('container').style.backgroundColor = "rgba(236, 130, 130, 0.505)";
             setTimeout(function(){
-                document.getElementById('container').style.backgroundColor = "beige";
+                document.getElementById('container').style.backgroundColor = "transparent";
             }, 100);
         }
 
@@ -104,7 +109,35 @@ class Typer{
             this.endTime = performance.now();
             this.word = this.word.slice(1);
             this.drawWord();
-            $('#score').html(this.name + ", sinu aeg oli: " + ((this.endTime-this.startTime)/1000).toFixed(2) + " sekundit.");
+            let wpmpic = "";
+            let wordsPerMin1 = ((this.chars / ((this.endTime - this.startTime) / 1000)) * 60).toFixed(0);
+            console.log("wordsPerMin1 "+wordsPerMin1);
+            if (40>=wordsPerMin1>=49) {
+                wpmpic = "type_avarage.png";
+            } 
+            else if(50>=wordsPerMin1>=60)
+            {
+                wpmpic = "type_above.png";
+            }
+            else if(61>=wordsPerMin1>=70)
+            {
+                wpmpic = "type_productive.png";
+            }
+            else if(71>=wordsPerMin1 >= 119)
+            {
+                wpmpic = "type_high.png";
+            }
+            else if (120<wordsPerMin1){
+                wpmpic = "type_comp.png";
+            }
+            else
+            {
+                wpmpic = "type_pask.png";
+            }
+            let htmlContent = this.name + ", sinu aeg oli: " + (((this.endTime - this.startTime) / 1000)/60).toFixed(2) + " minutit.";
+            htmlContent += '<br><img src="' + wpmpic + '" alt="typing image">';
+            $('#score').html(htmlContent);
+
             this.saveResults();
             $('#restart, #score').show();
         }
@@ -143,7 +176,7 @@ class Typer{
         }
         
         let wordsPerMinute = ((this.chars/((this.endTime-this.startTime)/1000)) * 60).toFixed(0);
-        console.log(wordsPerMinute);
+        //console.log("wordsPerMinute "+wordsPerMinute);
 
 
         let result = {
