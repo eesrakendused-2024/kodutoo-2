@@ -1,180 +1,261 @@
 //let playerName = prompt('Palun sisesta oma nimi')
 
-class Typer{
-    constructor(){
-        this.name = "Anonüümne"; //kasutaja nimi, mida ta peab mängu alguses sisestam
-        this.wordsInGame = 3; //mitu sõna peab trükkima, et mäng lõppeks
-        this.wordsTyped = 0; //mitu sõna on trükitud
-        this.startingWordLength = 3; //esimese sõna pikkus
-        this.words = []; //need sõnad, mis tulevad lemmade failist
-        this.typeWords = []; //need sõnad, mida hakkame trükkima
-        this.word = "aabits"; //sõna, mida peab trükkima
-        this.startTime = 0; //mängu algusaeg
-        this.endTime = 0; // mängu lõpuaeg
-        this.results = [];
-        this.chars = 0;
+class Typer {
+  constructor() {
+    this.name = "Anonüümne"; //kasutaja nimi, mida ta peab mängu alguses sisestam
+    this.wordsInGame = 3; //mitu sõna peab trükkima, et mäng lõppeks
+    this.wordsTyped = 0; //mitu sõna on trükitud
+    this.startingWordLength = 3; //esimese sõna pikkus
+    this.words = []; //need sõnad, mis tulevad lemmade failist
+    this.typeWords = []; //need sõnad, mida hakkame trükkima
+    this.word = "aabits"; //sõna, mida peab trükkima
+    this.startTime = 0; //mängu algusaeg
+    this.endTime = 0; // mängu lõpuaeg
+    this.results = [];
+    this.chars = 0;
+    this.loadFromFile();
+  }
 
-        this.loadFromFile();
+  loadFromFile() {
+    $.get("lemmad2013.txt", (data) => this.getWords(data));
+
+    $.get("database.txt", (data) => {
+      console.log("datata", data);
+      let content = JSON.parse(data).content;
+      this.results = content;
+    });
+  }
+
+  getWords(data) {
+    //console.log(data);
+    const dataFromFile = data.split("\n");
+    this.separateWordsByLength(dataFromFile);
+  }
+
+  stopTyper() {
+    $(document).off("keypress");
+  }
+
+  separateWordsByLength(data) {
+    for (let i = 0; i < data.length; i++) {
+      const wordLength = data[i].length;
+
+      if (this.words[wordLength] === undefined) {
+        this.words[wordLength] = [];
+      }
+
+      this.words[wordLength].push(data[i]);
     }
 
-    loadFromFile(){
-        $.get("lemmad2013.txt", (data) => this.getWords(data));
+    console.log(this.words);
 
-        $.get("database.txt", (data)=>{
-            let content = JSON.parse(data).content;
-            this.results = content;
-            console.log(this.results);
-        })
+    $("#vahetaMangija").click(() => {
+      $("#name").show();
+      this.stopTyper();
+    });
+
+    //console.log(this.words);
+    $("#submitName").click(() => {
+      this.name = $("#nameValue").val();
+      this.startingWordLength = parseFloat($("#startingWordLength").val());
+      this.wordsInGame = parseFloat($("#wordsInGame").val());
+      if (this.startingWordLength + this.wordsInGame > 31) {
+        $("#error").show();
+      } else {
+        $("#name").hide();
+
+        this.startTyper();
+        this.startOnce();
+      }
+    });
+  }
+
+  startOnce() {
+    $(document).on("keypress", (event) => this.shortenWord(event.key));
+    $("#restart").on("click", () => this.startTyper());
+    this.showResults();
+  }
+
+  startTyper() {
+    $("#restart, #score").hide();
+    this.wordsTyped = 0;
+    this.generateWords();
+    this.updateInfo();
+    this.startTime = performance.now();
+    this.hideSpeedImage();
+    console.log(this.startingWordLength);
+  }
+
+  updateInfo() {
+    $("#gameinfo").html(
+      this.wordsTyped + 1 + ". sõna " + this.wordsInGame + "-st"
+    );
+  }
+
+  shortenWord(keypressed) {
+    console.log("keypressed", keypressed);
+    console.log("this.wrod", this.word.charAt(0));
+
+    if (this.word.charAt(0) != keypressed) {
+      document.getElementById("container").style.backgroundColor = "lightpink";
+      setTimeout(function () {
+        document.getElementById("container").style.backgroundColor =
+          "rgb(248, 217, 240)";
+      }, 100);
     }
 
-    getWords(data){
-        //console.log(data);
-        const dataFromFile = data.split('\n');
-        this.separateWordsByLength(dataFromFile);
+    if (this.word.length > 1 && this.word.charAt(0) == keypressed) {
+      this.word = this.word.slice(1);
+      this.drawWord();
+    } else if (
+      this.word.length == 1 &&
+      this.word.charAt(0) == keypressed &&
+      this.wordsTyped != this.wordsInGame - 1
+    ) {
+      this.wordsTyped++;
+      this.selectWord();
+    } else if (
+      this.word.length == 1 &&
+      this.word.charAt(0) == keypressed &&
+      this.wordsTyped == this.wordsInGame - 1
+    ) {
+      this.endTime = performance.now();
+      this.word = this.word.slice(1);
+      this.drawWord();
+      $("#score").html(
+        this.name +
+          ", sinu aeg oli: " +
+          ((this.endTime - this.startTime) / 1000).toFixed(2) +
+          " sekundit."
+      );
+      this.saveResults();
+      this.updateSpeedImage();
+      $("#restart, #score").show();
+    }
+  }
+
+  updateSpeedImage() {
+    let cpm = (this.chars / ((this.endTime - this.startTime) / 1000)) * 60;
+    let speedImage = "";
+
+    if (cpm >= 350) {
+      speedImage = "fast.jpg";
+    } else if (cpm >= 300) {
+      speedImage = "medium.jpg";
+    } else {
+      speedImage = "slow.jpg";
     }
 
-    separateWordsByLength(data){
-        for(let i = 0; i < data.length; i++){
-            const wordLength = data[i].length;
+    $("#scorePic").html(`<img src="${speedImage}" alt="speed">`);
+  }
 
-            if(this.words[wordLength] === undefined){
-                this.words[wordLength] = [];
-            }
+  hideSpeedImage() {
+    $("#scorePic").html("");
+  }
 
-            this.words[wordLength].push(data[i]);
-        }
+  generateWords() {
+    for (let i = 0; i < this.wordsInGame; i++) {
+      const wordLength = this.startingWordLength + i;
+      const randomWord = Math.round(
+        Math.random() * this.words[wordLength].length
+      );
+      //console.log(wordLength, randomWord);
 
-        console.log(this.words)
+      this.typeWords[i] = this.words[wordLength][randomWord];
+    }
+    console.log(this.typeWords);
+    this.selectWord();
+  }
 
-        //console.log(this.words);
-        $('#submitName').click(
-            ()=>{
-                this.name = $('#nameValue').val();
-                this.startingWordLength = parseFloat($('#startingWordLength').val());
-                this.wordsInGame = parseFloat($('#wordsInGame').val());
-                if(this.startingWordLength+this.wordsInGame > 31){
-                    $('#error').show();
-                } else {
-                    $('#name').hide();
+  selectWord() {
+    this.word = this.typeWords[this.wordsTyped];
+    this.drawWord();
+  }
 
-                    this.startTyper();
-                    this.startOnce();
-                }
+  drawWord() {
+    $("#wordDiv").html(this.word);
+    this.updateInfo();
+  }
 
-            }
-        );
+  saveResults() {
+    this.chars = 0;
+    for (let i = 0; i < this.wordsInGame; i++) {
+      this.chars = this.chars + this.startingWordLength + i;
+      console.log(this.chars);
     }
 
-    startOnce(){
-        $(document).on("keypress", (event)=>this.shortenWord(event.key));
-        $('#restart').on('click', ()=>this.startTyper());
-        this.showResults();
-    }
+    let wordsPerMinute = (
+      (this.chars / ((this.endTime - this.startTime) / 1000)) *
+      60
+    ).toFixed(0);
+    console.log(wordsPerMinute);
 
-    startTyper(){
-        $('#restart, #score').hide();
-        this.wordsTyped = 0;
-        this.generateWords();
-        this.updateInfo();
-        this.startTime = performance.now();
-        console.log(this.startingWordLength);
-    }
+    let result = {
+      name: this.name,
+      time: ((this.endTime - this.startTime) / 1000).toFixed(2),
+      words: this.wordsInGame,
+      chars: this.chars,
+      wordsPerMin: wordsPerMinute,
+    };
 
-    updateInfo(){
-        $('#gameinfo').html((this.wordsTyped + 1) + ". sõna " + this.wordsInGame + "-st");
-    }
+    this.results.push(result);
 
-    shortenWord(keypressed){
-        //console.log(keypressed);
+    this.results.sort(
+      (a, b) => parseFloat(b.wordsPerMin) - parseFloat(a.wordsPerMin)
+    );
 
-        if(this.word.charAt(0) != keypressed){
-            document.getElementById('container').style.backgroundColor = "lightpink";
-            setTimeout(function(){
-                document.getElementById('container').style.backgroundColor = "beige";
-            }, 100);
-        }
+    this.showResults();
 
-        if(this.word.length > 1 && this.word.charAt(0) == keypressed){
-            this.word = this.word.slice(1);
-            this.drawWord();
-        } else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped != this.wordsInGame - 1){
-            this.wordsTyped++;
-            this.selectWord();
-        } else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped == this.wordsInGame - 1){
-            this.endTime = performance.now();
-            this.word = this.word.slice(1);
-            this.drawWord();
-            $('#score').html(this.name + ", sinu aeg oli: " + ((this.endTime-this.startTime)/1000).toFixed(2) + " sekundit.");
-            this.saveResults();
-            $('#restart, #score').show();
-        }
-    }
+    $.post("server.php", { save: this.results }).done(function () {
+      console.log("Success");
+    });
+  }
 
+  showResults() {
+    $("#results").html("");
+    populateResultsTable(this.results);
+  }
+}
 
+var modal = document.getElementById("myModal");
 
-    generateWords(){
-        for(let i = 0; i < this.wordsInGame; i++){
-            const wordLength = this.startingWordLength + i;
-            const randomWord = Math.round(Math.random() * 
-            this.words[wordLength].length);
-            //console.log(wordLength, randomWord);
+var btn = document.getElementById("myBtn");
 
-            this.typeWords[i] = this.words[wordLength][randomWord];
-        }
-        console.log(this.typeWords);
-        this.selectWord();
-    }
+var span = document.getElementsByClassName("close")[0];
 
-    selectWord(){
-        this.word = this.typeWords[this.wordsTyped];
-        this.drawWord();
-    }
+btn.onclick = function () {
+  modal.style.display = "block";
+};
 
-    drawWord(){
-        $('#wordDiv').html(this.word);
-        this.updateInfo();
-    }
+span.onclick = function () {
+  modal.style.display = "none";
+};
 
-    saveResults(){
-        this.chars = 0;
-        for(let i = 0; i < this.wordsInGame; i++){
-            this.chars = this.chars + this.startingWordLength + i;
-            console.log(this.chars);
-        }
-        
-        let wordsPerMinute = ((this.chars/((this.endTime-this.startTime)/1000)) * 60).toFixed(0);
-        console.log(wordsPerMinute);
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
+function populateResultsTable(results) {
+  var tableBody = document.getElementById("results");
 
-        let result = {
-            name: this.name,
-            time: ((this.endTime-this.startTime)/1000).toFixed(2),
-            words: this.wordsInGame,
-            chars: this.chars,
-            wordsPerMin: wordsPerMinute
-        }
+  results.forEach(function (result, i) {
+    var row = tableBody.insertRow();
+    var numberCell = row.insertCell(0);
+    var nameCell = row.insertCell(1);
+    var timeCell = row.insertCell(2);
+    var wordsCell = row.insertCell(3);
+    var charsCell = row.insertCell(4);
+    var wordsPerMinCell = row.insertCell(5);
 
-        this.results.push(result);
-
-        this.results.sort((a, b) => parseFloat(b.wordsPerMin) - parseFloat(a.wordsPerMin));
-
-        this.showResults();
-
-        $.post('server.php', {save: this.results}).done(
-            function(){
-                console.log("Success");
-            }
-        );
-    }
-
-    showResults(){
-        $('#results').html("");
-        for(let i = 0; i < this.results.length; i++){
-            if(i === 10){break;}
-            $("#results").append((i+1) + "." + this.results[i].name + "    " + this.results[i].time +
-            "    " + this.results[i].words + "    " + this.results[i].chars + "    " + this.results[i].wordsPerMin + "<br>");
-        }
-    }
+    numberCell.textContent = i + 1;
+    nameCell.textContent = result.name;
+    timeCell.textContent = result.time;
+    wordsCell.textContent = result.words;
+    charsCell.textContent = result.chars;
+    wordsPerMinCell.textContent = result.wordsPerMin;
+  });
 }
 
 let typer = new Typer();
