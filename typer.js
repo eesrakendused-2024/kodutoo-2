@@ -167,14 +167,49 @@ class Typer{
         );
     }
 
-    showResults(){
+    /*showResults(){
         $('#results').html("");
         for(let i = 0; i < this.results.length; i++){
             if(i === 10){break;}
             $("#results").append((i+1) + "." + this.results[i].name + "    " + this.results[i].time +
             "    " + this.results[i].words + "    " + this.results[i].chars + "    " + this.results[i].wordsPerMin + "<br>");
         }
+    }*/
+    showResults(){
+        $('#results').html(""); // Clear the previous results
+        const table = $('<table>').addClass('center'); // Create a new table element with the 'center' class
+        const headerRow = $('<tr>'); // Create a header row
+    
+        // Add table headers
+        headerRow.append($('<th>').text('Koht'));
+        headerRow.append($('<th>').text('Nimi'));
+        headerRow.append($('<th>').text('Aeg'));
+        headerRow.append($('<th>').text('Sõnade arv'));
+        headerRow.append($('<th>').text('Tähtede arv'));
+        headerRow.append($('<th>').text('Sõnu minutis'));
+    
+        table.append(headerRow); // Append the header row to the table
+    
+        // Iterate over results and create table rows
+        for(let i = 0; i < this.results.length; i++){
+            if(i === 10) break; // Show only the top 10 results
+            const result = this.results[i]; // Get the current result object
+            const row = $('<tr>'); // Create a new table row
+    
+            // Add data to the row
+            row.append($('<td>').text(i + 1));
+            row.append($('<td>').text(result.name));
+            row.append($('<td>').text(result.time));
+            row.append($('<td>').text(result.words));
+            row.append($('<td>').text(result.chars));
+            row.append($('<td>').text(result.wordsPerMin));
+    
+            table.append(row); // Append the row to the table
+        }
+    
+        $('#results').append(table); // Append the table to the results div
     }
 }
 
 let typer = new Typer();
+

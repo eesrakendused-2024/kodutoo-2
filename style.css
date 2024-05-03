@@ -6,6 +6,14 @@ body{
     font-style: normal;
 }
 
+button
+{
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+
 #container{
     width: 100vw;
     height: 70vh;
@@ -13,23 +21,21 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: beige;
+    background-image: url("Wallpaper images_ 4K, HD, Full HD, Dual Screen.jpg");
+    background-size: cover;
     font-size: 3em;
+    color:white;
 }
 
-#info, #results{
-    width: 100vw;
+#info/*, #results*/{
+    width: 100%;
     text-align: center;
-    padding: 1em;
+    /*background-color: lightblue;*/
 }
 
-#info{
-    background-color: lightblue;
-}
-
-#results{
+/*#results{
     background-color: lightgray;
-}
+}*/
 
 #restart{
     background-color: black;
@@ -68,6 +74,9 @@ body{
     height: 60px !important;
     border-radius: 25px;
     padding: 5px;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #submitName:hover{
@@ -79,3 +88,71 @@ body{
     color: red;
     font-size: 2.3em;
 }
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    text-align: center;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: auto;
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    height: 70%;
+    font-size: 25px;
+    }
+
+    /* The Close Button */
+    .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+#myBtn
+{
+    height: 30px !important;
+    border-radius: 25px;
+    padding: 5px;
+    justify-content: center;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Center the modal button */
+#modalButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust margin as needed */
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  

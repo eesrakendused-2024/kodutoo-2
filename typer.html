@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="typer.js" defer></script>
+    <script src="modal.js" defer></script>
     <title>Typer</title>
 </head>
 <body>
@@ -31,7 +32,15 @@
         <h1>Mängu info</h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
-    
+<div id="modalButtonContainer">
+    <button id="myBtn">Tulemused</button>
+</div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tulemused</h2>
+            <div id="results">Tulemused</div>
+        </div>
+    </div>
 </body>
 </html>
