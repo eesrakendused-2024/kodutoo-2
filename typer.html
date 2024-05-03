@@ -1,34 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <script src="typer.js" defer></script>
     <title>Typer</title>
 </head>
+
 <body>
-    <div id="name">
+    <div id="name" class="game-container">
+        <div class="title">
+            <h1>Mäng: Sisestage sõnad nii kiiresti kui võimalik</h1>
+        </div>
         <label for="nameValue">Palun sisesta oma nimi</label>
         <input type="text" id="nameValue">
         <label for="startingWordLength">Esimese sõna pikkus</label>
-        <input type="number" id="startingWordLength" max="31" value="3">
+        <input type="number" id="startingWordLength" max="31" value="2">
         <label for="wordsInGame">Sõnade arv mängus</label>
-        <input type="number" id="wordsInGame"max="31" value="5">
-        <input type="button" value="Mängi" id="submitName">
+        <input type="number" id="wordsInGame" max="31" value="1">
+        <div class="mängi">
+            <input type="button" value="Mängi" id="submitName" class="play-button">
+        </div>
         <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
+    </div>
+    <div class="add-player">
+        <input type="button" value="Vaheta mängija" id="vahetaMangija" class="play-button">
     </div>
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
         <div id="score">Siia mängu tulemus</div>
-        <button id="restart">Restart</button>
+        <div id="scorePic"></div>
+
+        <button id="restart" class="restart-button">Uuesti</button>
     </div>
     <div id="info">
         <h1>Mängu info</h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
-    
+
+    <div class="buttonContainer">
+        <button id="myBtn">Tulemused</button>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Siin on teie tulemused:</p>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Nimi</th>
+                        <th>Aeg</th>
+                        <th>Sõnade arv</th>
+                        <th>Tähemärgid</th>
+                        <th>Punktid</th>
+                    </tr>
+                </thead>
+                <tbody id="results"></tbody>
+            </table>
+        </div>
+    </div>
+
+
 </body>
+
 </html>
