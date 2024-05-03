@@ -13,6 +13,7 @@ class Typer{
         this.endTime = 0; // mängu lõpuaeg
         this.results = [];
         this.chars = 0;
+        this.streak = 1; //streak
 
         this.loadFromFile();
     }
@@ -72,7 +73,9 @@ class Typer{
     }
 
     startTyper(){
+        this.streak = 0;
         $('#restart, #score').hide();
+        $("#streak").show();
         this.wordsTyped = 0;
         this.generateWords();
         this.updateInfo();
@@ -97,53 +100,47 @@ class Typer{
             setTimeout(function(){
                 document.getElementById('container').style.backgroundColor = "transparent";
             }, 100);
+            this.resetStreak();
         }
 
         if(this.word.length > 1 && this.word.charAt(0) == keypressed){
             this.word = this.word.slice(1);
+            this.updateStreak();
             this.drawWord();
         } else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped != this.wordsInGame - 1){
             this.wordsTyped++;
+            this.updateStreak();
             this.selectWord();
         } else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped == this.wordsInGame - 1){
             this.endTime = performance.now();
             this.word = this.word.slice(1);
             this.drawWord();
             let wpmpic = "";
-            let wordsPerMin1 = ((this.chars / ((this.endTime - this.startTime) / 1000)) * 60).toFixed(0);
-            console.log("wordsPerMin1 "+wordsPerMin1);
-            if (40>=wordsPerMin1>=49) {
+            let wordsPerMin = ((this.chars / ((this.endTime - this.startTime) / 1000)) * 60).toFixed(0);
+            console.log("wordsPerMin "+wordsPerMin);
+            if (wordsPerMin >= 40 && wordsPerMin <= 49) {
                 wpmpic = "type_avarage.png";
-            } 
-            else if(50>=wordsPerMin1>=60)
-            {
+            } else if (wordsPerMin >= 50 && wordsPerMin <= 59) {
                 wpmpic = "type_above.png";
-            }
-            else if(61>=wordsPerMin1>=70)
-            {
+            } else if (wordsPerMin >= 60 && wordsPerMin <= 69) {
                 wpmpic = "type_productive.png";
-            }
-            else if(71>=wordsPerMin1 >= 119)
-            {
+            } else if (wordsPerMin >= 70 && wordsPerMin <= 120) {
                 wpmpic = "type_high.png";
-            }
-            else if (120<wordsPerMin1){
+            } else if (wordsPerMin > 120) {
                 wpmpic = "type_comp.png";
+            } else {
+                wpmpic = "type_bad.png";
             }
-            else
-            {
-                wpmpic = "type_pask.png";
-            }
-            let htmlContent = this.name + ", sinu aeg oli: " + (((this.endTime - this.startTime) / 1000)/60).toFixed(2) + " minutit.";
+            let htmlContent = this.name + ", sinu aeg oli: " + (((this.endTime - this.startTime) / 1000)/60).toFixed(2) + " minutit. Sinu streak oli "+ this.streak;
             htmlContent += '<br><img src="' + wpmpic + '" alt="typing image">';
             $('#score').html(htmlContent);
 
             this.saveResults();
+            
+            $("#streak").hide();
             $('#restart, #score').show();
         }
     }
-
-
 
     generateWords(){
         for(let i = 0; i < this.wordsInGame; i++){
@@ -200,14 +197,6 @@ class Typer{
         );
     }
 
-    /*showResults(){
-        $('#results').html("");
-        for(let i = 0; i < this.results.length; i++){
-            if(i === 10){break;}
-            $("#results").append((i+1) + "." + this.results[i].name + "    " + this.results[i].time +
-            "    " + this.results[i].words + "    " + this.results[i].chars + "    " + this.results[i].wordsPerMin + "<br>");
-        }
-    }*/
     showResults(){
         $('#results').html(""); // Clear the previous results
         const table = $('<table>').addClass('center'); // Create a new table element with the 'center' class
@@ -242,6 +231,19 @@ class Typer{
     
         $('#results').append(table); // Append the table to the results div
     }
+    updateStreak() {
+        this.streak++;
+        if (this.streak > this.maxStreak) {
+            this.maxStreak = this.streak;
+        }
+        $("#streak").html(this.streak);
+    }
+
+    resetStreak() {
+        this.streak = 0;
+        $("#streak").html(this.streak);
+    }
+
 }
 
 let typer = new Typer();

@@ -11,13 +11,13 @@ Tähtaeg: 05.05.2024 23:59
 
 4. ~~Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti: https://www.typingpal.com/en/blog/good-typing-speed **if-else tekst äkki? kui üldse ei taha siis võib lihtsalt graafiku teha ka eesti keelest ja kui üldse ei taha siis screen sealt lehe pealt**~~
 
-5. Teha rakendus paremini kasutatavaks ka mobiilivaatest kasutades media query't: https://www.w3schools.com/css/css_rwd_mediaqueries.asp **(skull_emoji)**
+5. ~~Teha rakendus paremini kasutatavaks ka mobiilivaatest kasutades media query't: https://www.w3schools.com/css/css_rwd_mediaqueries.asp **(skull_emoji)**~~
 
 6. Muuda lehe CSS-i vastavalt oma soovidele muutes ära kõik praegu rakenduses kasutusel olevad värvid, teksti suurused ja elementide mõõtmed. Ideid leiad siit: https://www.w3schools.com/css/default.asp **lmao võiks teha minecraft themed võ midagi XD**
 
-7. Leia moodus, kuidas kasutada CSS-is vähemalt 5-t erinevat pseudo class-i: https://www.w3schools.com/css/css_pseudo_classes.asp
+7. ~~Leia moodus, kuidas kasutada CSS-is vähemalt 5-t erinevat pseudo class-i: https://www.w3schools.com/css/css_pseudo_classes.asp~~
 
-8. Lisa omaltpoolt veel üks feature, mida hetkel rakenduses pole. **(skull_emoji)x2**
+8. ~~Lisa omaltpoolt veel üks feature, mida hetkel rakenduses pole. **(skull_emoji)x2**~~
 
 ### GitHub'i töövoog kodutöö esitamiseks
 
