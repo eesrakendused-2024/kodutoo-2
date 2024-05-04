@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="typer.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Typer</title>
+
 </head>
+
 <body>
+    
     <div id="name">
+
         <label for="nameValue">Palun sisesta oma nimi</label>
         <input type="text" id="nameValue">
         <label for="startingWordLength">Esimese sõna pikkus</label>
@@ -17,18 +25,64 @@
         <label for="wordsInGame">Sõnade arv mängus</label>
         <input type="number" id="wordsInGame"max="31" value="5">
         <input type="button" value="Mängi" id="submitName">
+
         <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
+
     </div>
+
     <div id="container">
+
         <div id="wordDiv">Siia kuvame sõna</div>
         <div id="score">Siia mängu tulemus</div>
         <button id="restart">Restart</button>
+
+        <div id="result-image" class="modal">
+
+            <div class="modal-content">
+
+                <span class="close2">&times;</span>
+
+                <div id="modal-results2">Midagi läks valesti
+
+                </div>
+       
+            </div>
+
+        </div>
+
     </div>
+
     <div id="info">
+
         <h1>Mängu info</h1>
         <p id="gameinfo"></p>
+
     </div>
-    <div id="results">Tulemused</div>
+
+    <div id="results">
+    
+        <button id="myBtn">Näita tulemusi</button>
+
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+
+                <span class="close">&times;</span>
+                <p id="modal-results">Midagi läks valesti</p>
+       
+            </div>
+
+        </div>
+
+        <select name="Muuda teemat" id="theme">
+            <option value="default-theme">Vali teema</option>
+            <option value="dark-blue">Tumesinine</option>
+            <option value="yellow">Kollane</option>
+            <option value="green">Roheline</option>
+            <option value="red">Punane</option>
+        </select>
+
+    </div>
     
 </body>
 </html>
