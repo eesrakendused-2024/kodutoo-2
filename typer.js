@@ -1,7 +1,9 @@
 //let playerName = prompt('Palun sisesta oma nimi')
 
-class Typer{
-    constructor(){
+class Typer
+{
+    constructor()
+    {
         this.name = "Anonüümne"; //kasutaja nimi, mida ta peab mängu alguses sisestam
         this.wordsInGame = 3; //mitu sõna peab trükkima, et mäng lõppeks
         this.wordsTyped = 0; //mitu sõna on trükitud
@@ -18,27 +20,33 @@ class Typer{
         this.loadFromFile();
     }
 
-    loadFromFile(){
+    loadFromFile()
+    {
         $.get("lemmad2013.txt", (data) => this.getWords(data));
 
-        $.get("database.txt", (data)=>{
+        $.get("database.txt", (data)=>
+        {
             let content = JSON.parse(data).content;
             this.results = content;
             console.log(this.results);
         })
     }
 
-    getWords(data){
+    getWords(data)
+    {
         //console.log(data);
         const dataFromFile = data.split('\n');
         this.separateWordsByLength(dataFromFile);
     }
 
-    separateWordsByLength(data){
-        for(let i = 0; i < data.length; i++){
+    separateWordsByLength(data)
+    {
+        for(let i = 0; i < data.length; i++)
+        {
             const wordLength = data[i].length;
 
-            if(this.words[wordLength] === undefined){
+            if(this.words[wordLength] === undefined)
+            {
                 this.words[wordLength] = [];
             }
 
@@ -48,16 +56,20 @@ class Typer{
         console.log(this.words)
 
         //console.log(this.words);
-        $('#submitName').click(
-            ()=>{
+        $('#submitName').click
+        (
+            ()=>
+            {
                 this.name = $('#nameValue').val();
                 this.startingWordLength = parseFloat($('#startingWordLength').val());
                 this.wordsInGame = parseFloat($('#wordsInGame').val());
-                if(this.startingWordLength+this.wordsInGame > 31){
+                if(this.startingWordLength+this.wordsInGame > 31)
+                {
                     $('#error').show();
-                } else {
+                } 
+                else 
+                {
                     $('#name').hide();
-
                     this.startTyper();
                     this.startOnce();
                 }
@@ -66,13 +78,15 @@ class Typer{
         );
     }
 
-    startOnce(){
+    startOnce()
+    {
         $(document).on("keypress", (event)=>this.shortenWord(event.key));
         $('#restart').on('click', ()=>this.startTyper());
         this.showResults();
     }
 
-    startTyper(){
+    startTyper()
+    {
         this.streak = 0;
         $('#restart, #score').hide();
         $("#streak").show();
@@ -83,35 +97,44 @@ class Typer{
         console.log(this.startingWordLength);
     }
 
-    updateInfo(){
+    updateInfo()
+    {
         $('#gameinfo').html((this.wordsTyped + 1) + ". sõna " + this.wordsInGame + "-st");
     }
 
-    shortenWord(keypressed){
+    shortenWord(keypressed)
+    {
         //console.log(keypressed);
         this.chars = 0;
-        for(let i = 0; i < this.wordsInGame; i++){
+        for(let i = 0; i < this.wordsInGame; i++)
+        {
             this.chars = this.chars + this.startingWordLength + i;
             console.log(this.chars);
         }
 
-        if(this.word.charAt(0) != keypressed){
+        if(this.word.charAt(0) != keypressed)
+        {
             document.getElementById('container').style.backgroundColor = "rgba(236, 130, 130, 0.505)";
-            setTimeout(function(){
-                document.getElementById('container').style.backgroundColor = "transparent";
-            }, 100);
+            setTimeout(function()
+                {document.getElementById('container').style.backgroundColor = "transparent";}
+            , 100);
             this.resetStreak();
         }
 
-        if(this.word.length > 1 && this.word.charAt(0) == keypressed){
+        if(this.word.length > 1 && this.word.charAt(0) == keypressed)
+        {
             this.word = this.word.slice(1);
             this.updateStreak();
             this.drawWord();
-        } else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped != this.wordsInGame - 1){
+        } 
+        else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped != this.wordsInGame - 1)
+        {
             this.wordsTyped++;
             this.updateStreak();
             this.selectWord();
-        } else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped == this.wordsInGame - 1){
+        } 
+        else if(this.word.length == 1 && this.word.charAt(0) == keypressed && this.wordsTyped == this.wordsInGame - 1)
+        {
             this.endTime = performance.now();
             this.word = this.word.slice(1);
             this.drawWord();
@@ -131,7 +154,7 @@ class Typer{
             } else {
                 wpmpic = "type_bad.png";
             }
-            let htmlContent = this.name + ", sinu aeg oli: " + (((this.endTime - this.startTime) / 1000)/60).toFixed(2) + " minutit. Sinu streak oli "+ this.streak;
+            let htmlContent = this.name + ", sinu aeg oli: " + (((this.endTime - this.startTime) / 1000)).toFixed(2) + " sekundit. Sinu streak oli "+ this.streak;
             htmlContent += '<br><img src="' + wpmpic + '" alt="typing image">';
             $('#score').html(htmlContent);
 
@@ -142,8 +165,10 @@ class Typer{
         }
     }
 
-    generateWords(){
-        for(let i = 0; i < this.wordsInGame; i++){
+    generateWords()
+    {
+        for(let i = 0; i < this.wordsInGame; i++)
+        {
             const wordLength = this.startingWordLength + i;
             const randomWord = Math.round(Math.random() * 
             this.words[wordLength].length);
@@ -155,19 +180,23 @@ class Typer{
         this.selectWord();
     }
 
-    selectWord(){
+    selectWord()
+    {
         this.word = this.typeWords[this.wordsTyped];
         this.drawWord();
     }
 
-    drawWord(){
+    drawWord()
+    {
         $('#wordDiv').html(this.word);
         this.updateInfo();
     }
 
-    saveResults(){
+    saveResults()
+    {
         this.chars = 0;
-        for(let i = 0; i < this.wordsInGame; i++){
+        for(let i = 0; i < this.wordsInGame; i++)
+        {
             this.chars = this.chars + this.startingWordLength + i;
             console.log(this.chars);
         }
@@ -175,8 +204,8 @@ class Typer{
         let wordsPerMinute = ((this.chars/((this.endTime-this.startTime)/1000)) * 60).toFixed(0);
         //console.log("wordsPerMinute "+wordsPerMinute);
 
-
-        let result = {
+        let result = 
+        {
             name: this.name,
             time: ((this.endTime-this.startTime)/1000).toFixed(2),
             words: this.wordsInGame,
@@ -190,19 +219,21 @@ class Typer{
 
         this.showResults();
 
-        $.post('server.php', {save: this.results}).done(
-            function(){
+        $.post('server.php', {save: this.results}).done
+        (
+            function()
+            {
                 console.log("Success");
             }
         );
     }
 
-    showResults(){
-        $('#results').html(""); // Clear the previous results
-        const table = $('<table>').addClass('center'); // Create a new table element with the 'center' class
-        const headerRow = $('<tr>'); // Create a header row
+    showResults()
+    {
+        $('#results').html("");
+        const table = $('<table>').addClass('center');
+        const headerRow = $('<tr>');
     
-        // Add table headers
         headerRow.append($('<th>').text('Koht'));
         headerRow.append($('<th>').text('Nimi'));
         headerRow.append($('<th>').text('Aeg'));
@@ -210,15 +241,14 @@ class Typer{
         headerRow.append($('<th>').text('Tähtede arv'));
         headerRow.append($('<th>').text('Sõnu minutis'));
     
-        table.append(headerRow); // Append the header row to the table
+        table.append(headerRow); 
     
-        // Iterate over results and create table rows
-        for(let i = 0; i < this.results.length; i++){
-            if(i === 10) break; // Show only the top 10 results
-            const result = this.results[i]; // Get the current result object
-            const row = $('<tr>'); // Create a new table row
+        for(let i = 0; i < this.results.length; i++)
+        {
+            if(i === 10) break;
+            const result = this.results[i];
+            const row = $('<tr>');
     
-            // Add data to the row
             row.append($('<td>').text(i + 1));
             row.append($('<td>').text(result.name));
             row.append($('<td>').text(result.time));
@@ -226,20 +256,23 @@ class Typer{
             row.append($('<td>').text(result.chars));
             row.append($('<td>').text(result.wordsPerMin));
     
-            table.append(row); // Append the row to the table
+            table.append(row);
         }
     
-        $('#results').append(table); // Append the table to the results div
+        $('#results').append(table);
     }
-    updateStreak() {
+    updateStreak() 
+    {
         this.streak++;
-        if (this.streak > this.maxStreak) {
+        if (this.streak > this.maxStreak) 
+        {
             this.maxStreak = this.streak;
         }
         $("#streak").html(this.streak);
     }
 
-    resetStreak() {
+    resetStreak() 
+    {
         this.streak = 0;
         $("#streak").html(this.streak);
     }

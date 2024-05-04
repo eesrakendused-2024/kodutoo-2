@@ -41,7 +41,8 @@ th, td
     color: #000000;
 }
 
-#info{
+#info
+{
     width: 100%;
     text-align: center;
 }
@@ -51,11 +52,11 @@ th, td
     color: #000000;
 }
 
-#restart{
+#restart
+{
     background-color: rgb(2, 2, 2);
     color:white;
     font-size: 32px;
-    /*border-radius: 32px;*/
     padding: 5px 25px;
     margin-top: 10px;
 }
@@ -65,7 +66,8 @@ th, td
     background-color: #4f4f4f;
 }
 
-#name{
+#name
+{
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -80,33 +82,37 @@ th, td
     font-style: normal;
 }
 
-#name input{
+#name input
+{
     height: 50px;
     font-size: 38px;
     min-width: 300px;
     margin: 10px;
 }
 
-#name label{
+#name label
+{
     color: rgb(255, 255, 255);
     font-size: 1.9em;
     margin-top:20px;
 }
 
-#submitName{
+#submitName
+{
     height: 60px !important;
-    /*border-radius: 25px;*/
     padding: 5px;
     font-family: "Jersey 10", sans-serif !important;
     font-weight: 400;
     font-style: normal;
 }
 
-#submitName:hover{
+#submitName:hover
+{
     background-color: #888;
 }
 
-#error{
+#error
+{
     display: none;
     color: red;
     font-size: 2.3em;
@@ -120,60 +126,61 @@ th, td
     font-size: 27px;
 }
 
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+.modal 
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
     text-align: center;
-    margin: 0; /* Set margin to 0 */
+    margin: 0;
     padding: 20px;
     }
 
-    /* Modal Content/Box */
-    .modal-content {
+.modal-content 
+{
     background-color: rgba(96, 161, 53, 0.8);
-    margin: 0 auto; /* 15% from the top and centered */
-    padding: 20px;
+    margin: 0 auto;
+    padding: 40px;
     border: 1px solid #888;
-    width: 60%; /* Could be more or less, depending on screen size */
+    width: 60%;
     text-align: center;
     height: fit-content;
     font-size: 25px;
     color: rgb(229, 226, 226);
-    }
+}
 
-    /* The Close Button */
-    .close {
+.close 
+{
     color: #ffffff;
     float: right;
     font-size: 28px;
     font-weight: bold;
     margin-right: 10px;
-    }
+}
 
-    .close:hover,
-    .close:focus {
+.close:hover, .close:focus 
+{
     color: black;
     text-decoration: none;
     cursor: pointer;
-    }
+}
 
-    .center {
-        margin-left: auto;
-        margin-right: auto;
-      }
+.center 
+{
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #myBtn
 {
     height: 30px !important;
-    /*border-radius: 25px;*/
     padding: 5px 10px;
     margin-bottom: 5px;
     justify-content: center;
@@ -187,45 +194,53 @@ th, td
     background-color: #888;
 }
 
-#modalButtonContainer {
+#modalButtonContainer 
+{
     display: flex;
     justify-content: center;
     margin-top: 20px;
     font-family: "Jersey 10", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
 
-@media only screen and (max-width: 768px) {
-    #container {
+@media only screen and (max-width: 768px) 
+{
+    #container 
+    {
         height: 100vh; 
         padding: 20px; 
         font-size: 2em; 
     }
 
-    #name input {
+    #name input 
+    {
         font-size: 24px;
     }
 
-    .modal-content {
+    .modal-content 
+    {
         width: 90%; 
         font-size: 20px;
         justify-content: center;
         text-align: center;
         height: 100%;
-    }
-    
+    } 
 }
 
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-    #container {
+@media only screen and (max-width: 768px) and (orientation: landscape) 
+{
+    #container 
+    {
         font-size: 1.5em;
     }
 
-    #name input {
+    #name input 
+    {
         font-size: 20px;
     }
+    
     .modal-content
     {
         height: 100%;
