@@ -1,5 +1,8 @@
 # Kodutöö 2 - Typer
 
+## Link greeny-sse
+http://greeny.cs.tlu.ee/~liimets/eesrakendused/typer2/typer.html
+
 ## Google Font
 Jersey 20 - https://fonts.google.com/specimen/Jersey+20?query=jersey
 
@@ -29,3 +32,4 @@ Enda ideena lisatud feature on klaviatuuri klahvi vajutamisel on heli.
 - https://pixabay.com/sound-effects/spacebar-click-keyboard-199448/
 - https://fonts.google.com/specimen/Jersey+20?query=jersey
 - https://www.w3schools.com/html/html_tables.asp
+- ChatGPT - abi modali ristikese paigutusega ja audio faili lisamisega
