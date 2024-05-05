@@ -7,6 +7,13 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="typer.js" defer></script>
     <title>Typer</title>
+	<!--Google font-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+	<style>
+	body {
+	  font-family: "Quicksand", sans-serif;
+	}
+	</style>
 </head>
 <body>
     <div id="name">
@@ -21,14 +28,31 @@
     </div>
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
+		<div id="nextWordDiv">Siia kuvame järgmise sõna</div>
         <div id="score">Siia mängu tulemus</div>
+		<div id="description">Siia kirjeldus sinu kiiruse kohta</div>
         <button id="restart">Restart</button>
     </div>
     <div id="info">
-        <h1>Mängu info</h1>
+        <h1 id="game">Mängu info
+			<p class="hiddenInfo">Mängu eesmärk on võimalikult kiirsti kirjutada kõik sõnad!</p>
+		</h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
-    
+	<div id="results">
+
+        <button id="resultButton">Näita tulemusi</button>
+
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+
+                <span class="close">&times;</span>
+                <p id="modal-results">Tulemusi ei suudetud laadida</p>
+
+            </div>
+
+        </div>
+	</div>
 </body>
 </html>
