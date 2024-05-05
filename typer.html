@@ -22,13 +22,37 @@
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
         <div id="score">Siia mängu tulemus</div>
+        <div id="imageContainer">
+            <img id="resultImage" src="">
+        </div>
         <button id="restart">Restart</button>
     </div>
     <div id="info">
         <h1>Mängu info</h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
+    <!--/*Base code from https://www.w3schools.com/howto/howto_css_modals.asp*/-->
+    <button id="myBtn">Ava tulemused</button> 
+    <div id="myModal" class="modal">
+        <div class="modal-content" id="resultsBox">
+            <span class="close">&times;</span>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Järjekord</th>
+                        <th>Nimi</th>
+                        <th>Kiirus</th>
+                        <th>Sõnad</th>
+                        <th>Tähemärgid</th>
+                    </tr>
+                </thead>
+                <tbody id="tResults">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
     
 </body>
 </html>
