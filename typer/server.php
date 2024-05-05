@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="typer.js" defer></script>
+    <title>Typer</title>
+</head>
+<body>
+    <div id="name">
+        <label for="nameValue">Palun sisesta oma nimi</label>
+        <input type="text" id="nameValue">
+        <label for="startingWordLength">Esimese sõna pikkus</label>
+        <input type="number" id="startingWordLength" max="31" value="3">
+        <label for="wordsInGame">Sõnade arv mängus</label>
+        <input type="number" id="wordsInGame"max="31" value="5">
+        <input type="button" value="Mängi" id="submitName">
+        <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
+    </div>
+    <div id="container">
+        <div id="wordDiv">Siia kuvame sõna</div>
+        <div id="score">Siia mängu tulemus</div>
+        <button id="restart">Restart</button>
+    </div>
+    <button id="showResults" style="position: fixed; top: 10px; right: 10px;">Tulemused</button>
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Mängu tulemused</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nimi</th>
+                        <th>Aeg</th>
+                        <th>Sõnu</th>
+                        <th>Tähti</th>
+                        <th>Sõnu minutis</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTable"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
