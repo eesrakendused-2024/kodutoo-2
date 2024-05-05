@@ -1,6 +1,6 @@
 # kodutoo-2
 Täiusta tunnis loodud typer'i rakendust.
-
+.
 Tähtaeg: 05.05.2024 23:59
 
 # Kõik nõuded täidetud, siis 20 punkti.
