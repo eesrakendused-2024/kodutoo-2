@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,30 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="typer.js" defer></script>
+    <script src="typer2.js" defer></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jaro:opsz@6..72&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sedan+SC&display=swap" rel="stylesheet">
+
     <title>Typer</title>
 </head>
 <body>
     <div id="name">
         <label for="nameValue">Palun sisesta oma nimi</label>
-        <input type="text" id="nameValue">
+        <input type="text" id="nameValue" class="form" placeholder="...">
         <label for="startingWordLength">Esimese sõna pikkus</label>
-        <input type="number" id="startingWordLength" max="31" value="3">
+        <input type="number" id="startingWordLength" max="31" value="3" class="form" placeholder="...">
         <label for="wordsInGame">Sõnade arv mängus</label>
-        <input type="number" id="wordsInGame"max="31" value="5">
+        <input type="number" id="wordsInGame"max="31" value="5" class="form" placeholder="...">
         <input type="button" value="Mängi" id="submitName">
         <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
+        <div id="fontChanger">
+            <h2>Font Changer</h2>
+            <button class="fontButton" onclick="changeFont('Sedan SC, serif');">Sedan SC</button>
+            <button class="fontButton" onclick="changeFont('Jaro, sans-serif');">Jaro</button>
+            <button class="fontButton" onclick="changeFont('Playfair Display, serif');">Playfair Display</button>
+            <button class="fontButton" onclick="changeFont('Bebas Neue, sans-serif');">Bebas Neue</button>
+            <button class="fontButton" onclick="changeFont('Oswald, sans-serif');">Oswald</button>
+        </div>
     </div>
-    <div id="container">
-        <div id="wordDiv">Siia kuvame sõna</div>
-        <div id="score">Siia mängu tulemus</div>
-        <button id="restart">Restart</button>
+    <div id="background">
+        <div id="info">
+            <h1>Mängu info</h1>
+            <p id="gameinfo"></p>
+            <button id="myBtn">RESULTS</button>
+        </div>
+        <div id="container">
+            <div id="wordDiv">Siia kuvame sõna</div>
+            <div id="score">Siia mängu tulemus</div>
+            <div id="wpmGrade">Siia WPM grade</div>
+            <button id="restart">Restart</button>
+        </div>
+
+        <!-- The Result Modal -->
+        
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1 id="results-header">Tulemused</h1>
+                <div id="results"></div>
+            </div>
+        </div>
     </div>
-    <div id="info">
-        <h1>Mängu info</h1>
-        <p id="gameinfo"></p>
-    </div>
-    <div id="results">Tulemused</div>
-    
 </body>
 </html>

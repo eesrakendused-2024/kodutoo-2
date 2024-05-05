@@ -18,8 +18,7 @@ class Typer{
     }
 
     loadFromFile(){
-        $.get("lemmad2013.txt", (data) => this.getWords(data));
-
+        $.get("lemmad.txt", (data) => this.getWords(data));
         $.get("database.txt", (data)=>{
             let content = JSON.parse(data).content;
             this.results = content;
@@ -72,7 +71,8 @@ class Typer{
     }
 
     startTyper(){
-        $('#restart, #score').hide();
+        $('#restart, #score, #wpmGrade').hide();
+        $('#info').show();
         this.wordsTyped = 0;
         this.generateWords();
         this.updateInfo();
@@ -88,9 +88,9 @@ class Typer{
         //console.log(keypressed);
 
         if(this.word.charAt(0) != keypressed){
-            document.getElementById('container').style.backgroundColor = "lightpink";
+            document.getElementById('background').style.backgroundColor = "lightpink";
             setTimeout(function(){
-                document.getElementById('container').style.backgroundColor = "beige";
+                document.getElementById('background').style.backgroundColor = "cadetblue";
             }, 100);
         }
 
@@ -106,7 +106,7 @@ class Typer{
             this.drawWord();
             $('#score').html(this.name + ", sinu aeg oli: " + ((this.endTime-this.startTime)/1000).toFixed(2) + " sekundit.");
             this.saveResults();
-            $('#restart, #score').show();
+            $('#restart, #score, #wpmGrade').show();
         }
     }
 
@@ -141,10 +141,27 @@ class Typer{
             this.chars = this.chars + this.startingWordLength + i;
             console.log(this.chars);
         }
-        
+        //Tean, et ütlesite, et peaks kuvama pilti, aga sellelt lehelt ma ei leidnud, midagi mida peaks pildina näitama. Seega ma panin tektsina, et mälu ja resurrsse kokku hoida.
+        let wpmMeasure = ((this.chars/((this.endTime-this.startTime)/1000)) * 60);
         let wordsPerMinute = ((this.chars/((this.endTime-this.startTime)/1000)) * 60).toFixed(0);
-        console.log(wordsPerMinute);
-
+        console.log(wpmMeasure);
+        wpmMeasure = 61;
+        if (wpmMeasure > 120){
+            console.log("Competitive speed");
+            $('#wpmGrade').html("Competitive speed")
+        } else if (wpmMeasure > 70){
+            console.log("Competitive speed");
+            $('#wpmGrade').html("High speed")
+        } else if (wpmMeasure > 60){
+            console.log("Competitive speed");
+            $('#wpmGrade').html("Productive speed")
+        } else if (wpmMeasure > 50){
+            console.log("Above average speed");
+            $('#wpmGrade').html("Above average speed")
+        } else if (wpmMeasure > 40){
+            console.log("Average speed");
+            $('#wpmGrade').html("Average speed")
+        }
 
         let result = {
             name: this.name,
@@ -169,12 +186,35 @@ class Typer{
 
     showResults(){
         $('#results').html("");
+        $("#results").append('<p>Name; Time; Words; Chars; WPM;</p>');
         for(let i = 0; i < this.results.length; i++){
             if(i === 10){break;}
-            $("#results").append((i+1) + "." + this.results[i].name + "    " + this.results[i].time +
-            "    " + this.results[i].words + "    " + this.results[i].chars + "    " + this.results[i].wordsPerMin + "<br>");
+            $("#results").append((i+1) + ". " + this.results[i].name + " | " + this.results[i].time +
+            " | " + this.results[i].words + " | " + this.results[i].chars + " | " + this.results[i].wordsPerMin + " |<br>");
         }
     }
+    
+}
+let typer = new Typer();
+//Fondi vahetus
+//GPT aitas välja mõelda lahenduse, kus saab ühe funktsiooniga, kui oleks ise teind oleksin iga fondi jaoks funktsiooni teind eventListeneriga ja ID'dega. Unustasin, et buttonile saab määrata OnClick :P
+function changeFont(fontFamily){
+    document.body.style.fontFamily = fontFamily;
 }
 
-let typer = new Typer();
+// Game results modal
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
