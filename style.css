@@ -1,78 +1,210 @@
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: light-blue; 
 }
 
-#container{
-    width: 100vw;
+#container {
+    width: 100%;
     height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: beige;
+    background-color: green; 
     font-size: 3em;
 }
 
-#info, #results{
-    width: 100vw;
+#info, #results {
+    width: 100%;
     text-align: center;
-    padding: 1em;
+    padding: 0;
 }
 
-#info{
-    background-color: lightblue;
+#nextWordDiv {
+	font-size: 40px;
+} 
+
+#startingWordLength, #nameValue, #wordsInGame {
+    width: 80%;
 }
 
-#results{
-    background-color: lightgray;
+#score, #description {
+    background-color: #ffcccc;
 }
 
-#restart{
-    background-color: black;
-    color:white;
+#results {
+    background-color: #ffcc99; 
+	padding-bottom: 25px;
+}
+
+#restart {
+    background-color: #3333ff; 
+    color: white;
     font-size: 32px;
     border-radius: 32px;
     padding: 5px 25px;
     margin-top: 3em;
 }
 
-#name{
+#resultButton {
+    background-color: #3333ff; 
+    color: white;
+    font-size: 12px;
+    border-radius: 32px;
+    padding: 5px 25px;
+    margin-top: 3em;
+}
+
+#name {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background-color: black;
+    background-color: #ff66b2;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0;
 }
 
-#name input{
+#name input {
     height: 50px;
     font-size: 38px;
-    min-width: 300px;
+    min-width: 50%;
     margin: 10px;
 }
 
-#name label{
+#name label {
     color: white;
     font-size: 1.9em;
-    margin-top:20px;
+    margin-top
 }
 
-#submitName{
+#submitName {
     height: 60px !important;
     border-radius: 25px;
     padding: 5px;
 }
 
-#submitName:hover{
+#submitName:hover {
     opacity: 90%;
 }
 
-#error{
+#error {
     display: none;
     color: red;
     font-size: 2.3em;
+}
+
+.result-table {
+    margin: 0 auto;
+    border: 1px solid #333;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #00cc99;
+    color: white;
+}
+
+/*5 pseudoklassi*/
+#submitName:hover {
+	color: #ff0000;
+	font-size: 22px;
+} 
+
+#wordDiv:hover {
+	color: white;
+	font-size: 90px;
+} 
+
+.hiddenInfo {
+  display: none;
+  background-color: yellow;
+  padding: 0px;
+}
+
+#game:hover .hiddenInfo {
+  display: block;
+}
+
+tr:hover:not(:first-child){
+	font-size: 35px;
+}
+
+td:hover {
+    font-size: 40px;
+	font-weight: bold;
+}
+
+/*telefonide jaoks*/
+@media only screen and (max-width: 600px) {
+    #score, #description{
+		font-size: 14px;
+	}
+	
+	#container{
+		height: 35vh;
+	}
+	
+	.result-table {
+        font-size: 10px;
+    }
+	
+	th, td {
+    border: 1px solid #333;
+    padding: 2px;
+    text-align: center;
+    }
+}
+
+
+.background-slow {
+    background-image: url('images/turtle.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.background-average {
+    background-image: url('images/typewriter.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.background-fast {
+    background-image: url('images/train.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.background-productive {
+    background-image: url('images/office.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.background-very-fast {
+    background-image: url('images/racecar.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.background-professional {
+    background-image: url('images/prof.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
