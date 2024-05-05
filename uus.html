@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="uus.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="typer.js" defer></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="name">
+    <label for="nameValue" class="form">Palun sisesta oma nimi</label>
+    <input type="text" id="nameValue" class="form">
+    <label for="startingWordLength" class="form">Esimese sõna pikkus</label>
+    <input type="number" id="startingWordLength" value="3" class="form">
+    <label for="wordsInGame" class="form">Sõnade arv mängus</label>
+    <input type="number" id="wordsInGame" max="31" value="5" class="form">
+    <input type="button" value="Mängi" id="submitName" class="form">
+    <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31</div>
+</div>
+
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="results">Tulemused</div>
+  </div>
+
+</div>
+
+
+<div id="main">
+  <div class="header">
+    <button id="myBtn">Tulemused</button>
+    <div class="repo">
+      <a href="https://github.com/esteroja?tab=repositories">Github</a>
+    </div>
+  </div>
+  <div id="infoContainer">
+    <div id="info">
+      <p id = "gameinfo"></p>
+    </div>
+  </div>
+  <div id="timeContainer">
+    <div id="time">
+      <p id="timer">Aeg: 0 sekundit</p>
+    </div>
+  </div>
+  <div id="bigContainer">
+    <div id="container">
+      <div id="wordDiv">Siia kuvame sõna</div>
+      <div id="score">Siia mängu tulemus</div>
+      <div class="big-img-container">
+        <img class="big-img" src="" alt="kassipilt" style="display:none;">
+      </div>
+      <button id="restart">Restart</button>
+    </div>
+  </div>
+</div>
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html> 

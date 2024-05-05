@@ -10,5 +10,4 @@ function saveToFile($stringToSave){
     $jsonString = json_encode($object);
     file_put_contents("database.txt", $jsonString);
 }
-
 ?>
