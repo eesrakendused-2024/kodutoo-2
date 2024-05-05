@@ -1,57 +1,121 @@
 body{
     margin:0;
     padding:0;
+    font-family: "Oswald", sans-serif;
 }
-
+p:empty {
+    display: none;
+}
+input:placeholder-shown {
+    color: #8d0000 !important; 
+}
+#background {
+    background-color: cadetblue;
+    height: 100vh;
+}
 #container{
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: beige;
-    font-size: 3em;
+    font-size: 4em;
 }
-
-#info, #results{
-    width: 100vw;
+#info {
+    display: none;
+    position: fixed;
+    padding: 20px;
+    width: 300px; 
+    top: 50px; 
+    left: 50%; /*Õppisin GPTlt kuidas centerida box div läbi transformi*/
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    border: 2px solid #2b2b2b;
+    border-radius: 5px;
     text-align: center;
-    padding: 1em;
 }
-
-#info{
-    background-color: lightblue;
-}
-
-#results{
-    background-color: lightgray;
-}
-
 #restart{
-    background-color: black;
     color:white;
-    font-size: 32px;
-    border-radius: 32px;
+    font-size: 30px;
     padding: 5px 25px;
     margin-top: 3em;
+    background-color: grey;
+    border: 1px;
+    border-radius: 10px;
 }
-
+#restart:hover{
+    background-color: black;
+    opacity: 60%;
+}
+@media only screen and (min-width: 576px) {
+    #name input{
+        height: 50px;
+        font-size: 38px;
+        min-width: 300px;
+        margin: 10px;
+    }
+    #name label{
+        color: white;
+        font-size: 1.9em;
+        margin-top:20px;
+    }
+    #submitName{
+        height: 60px !important;
+        border-radius: 25px;
+        padding: 5px;
+        max-width: 100px !important;
+    }
+    #info {
+        display: none;
+        position: fixed;
+        padding: 20px;
+        width: 300px; 
+        top: 50px; 
+        left: 50%; /*Õppisin GPTlt kuidas centerida box div läbi transformi*/
+        transform: translateX(-50%);
+        background-color: #f0f0f0;
+        border: 2px solid #2b2b2b;
+        border-radius: 5px;
+        text-align: center;
+    }
+}
 #name{
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: black;
+    background-color: rgb(61, 61, 61);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
+#fontChanger{
+    color:white;
+    display: flex;
+    justify-content: grid;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(19, 18, 18);
+    border-radius: 30px;
+    padding: 30px;
+}
+.fontButton{
+    font-size: 30px;
+    padding: 5px 25px;
+    margin-top: 10px;
+    background-color: grey;
+    border: 1px;
+    border-radius: 10px;
+    width: 300px;
+}
+.fontButton:Hover{
+    opacity: 80%;
+}
 #name input{
-    height: 50px;
-    font-size: 38px;
-    min-width: 300px;
+    height: 5%;
+    font-size: 20px;
+    min-width: 30%;
     margin: 10px;
 }
 
@@ -65,14 +129,67 @@ body{
     height: 60px !important;
     border-radius: 25px;
     padding: 5px;
+    max-width: 200px;
 }
-
+.form:hover {
+    opacity: 70%;
+}
 #submitName:hover{
     opacity: 90%;
 }
 
 #error{
     display: none;
-    color: red;
-    font-size: 2.3em;
+    color: rgb(190, 4, 4);
+    font-size: 2em;
+}
+
+/* Väikeste muudatustega võetud otse w3 schoolist, nägi päris hea välja minu arust */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+}
+#myBtn{
+    color: white;
+    background-color: grey;
+    border: 1px;
+    border-radius: 10px;
+}
+#myBtn:active {
+    background-color: #7813a7; /* Change background color when button is clicked */
+
+}
+.modal-content {
+    background-color: #0f3d5c;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 15px;
+    width: 80%; 
+}
+#results{
+    background-color: rgb(193, 230, 210);
+    text-align: center;
+    padding: 2em;
+}
+#results-header{
+    color: white;
+}   
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
