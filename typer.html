@@ -21,14 +21,31 @@
     </div>
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
+        <div id="nextWordDiv">Siia kuvame järgmise sõna</div>
         <div id="score">Siia mängu tulemus</div>
         <button id="restart">Restart</button>
     </div>
     <div id="info">
-        <h1>Mängu info</h1>
+        <h1 id="game">Mängu info
+            <p class="hiddenInfo">Mängu eesmärk on võimalikult kiirsti kirjutada kõik sõnad!</p>
+        </h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
-    
+    <div id="result">
+        <button id="resultButton">Tulemused</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p id="modal-results"></p>
+            </div>
+        </div>
+    </div>
+    <div id="fontChange">
+        <select id="fontSelect">
+            <option value="Sedan SC">Sedan SC</option>
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+        </select>
+    </div>
 </body>
 </html>
