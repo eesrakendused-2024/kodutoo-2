@@ -1,78 +1,272 @@
-body{
-    margin:0;
-    padding:0;
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
 }
 
-#container{
-    width: 100vw;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: beige;
-    font-size: 3em;
+#container {
+	width: 100vw;
+	height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	animation: gradientAnimation 5s infinite alternate;
+	background: linear-gradient(rgb(248, 248, 199), rgb(223, 179, 91));
+
+	background-color: beige; /* Fallback to beige */
+	font-size: 3.1em;
 }
 
-#info, #results{
-    width: 100vw;
-    text-align: center;
-    padding: 1em;
+/* Phone screens */
+@media (max-width: 768px) {
+	#container {
+		height: 82vh;
+		width: 100vw;
+	}
+	body {
+		height: 50vh;
+	}
+	#name {
+		height: 110vh !important;
+		width: 100vw !important;
+	}
+	input,
+	label,
+	#score {
+		width: 60vw;
+		height: 10vh;
+	}
+
+	label {
+		font-size: 5vh !important;
+	}
+	#openResults,
+	#restart {
+		height: 8vh;
+		font-size: 6px;
+	}
+	#info {
+		height: 18vh !important;
+		width: 92vw !important;
+	}
 }
 
-#info{
-    background-color: lightblue;
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
-#results{
-    background-color: lightgray;
+#info {
+	width: 97.7vw;
+	height: 25.45vh;
+	text-align: center;
+	padding: 1em;
+	background: linear-gradient(rgb(166, 224, 244), rgb(11, 156, 166));
+	overflow: hidden;
 }
 
-#restart{
-    background-color: black;
-    color:white;
-    font-size: 32px;
-    border-radius: 32px;
-    padding: 5px 25px;
-    margin-top: 3em;
+#restart {
+	background-color: rgb(255, 176, 116); /* fallback */
+	background: linear-gradient(rgb(255, 176, 116), rgb(160, 105, 62));
+	color: rgb(0, 0, 0);
+	font-size: 34px;
+	border-radius: 32px;
+	padding: 5px 25px;
+	margin-top: 3em;
 }
 
-#name{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+#restart:hover {
+	color: rgb(28, 28, 28);
+	background-color: rgb(69, 69, 222);
+	background: linear-gradient(rgb(255, 188, 136), rgb(165, 120, 85));
+	cursor: pointer;
 }
 
-#name input{
-    height: 50px;
-    font-size: 38px;
-    min-width: 300px;
-    margin: 10px;
+#name {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: lightcoral;
+	background: linear-gradient(rgb(255, 140, 140), rgb(194, 56, 56));
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
-#name label{
-    color: white;
-    font-size: 1.9em;
-    margin-top:20px;
+#name input {
+	height: 50px;
+	font-size: 37px;
+	min-width: 300px;
+	margin: 10px;
+	border-radius: 15px;
+	filter: drop-shadow(5px 5px 1px #00000059);
 }
 
-#submitName{
-    height: 60px !important;
-    border-radius: 25px;
-    padding: 5px;
+#name input :focus {
+	background-color: #4cf6ff !important;
 }
 
-#submitName:hover{
-    opacity: 90%;
+#name label {
+	font-size: 2.8em;
+	margin-top: 20px;
+	filter: drop-shadow(3px 2px 1px #00000059);
 }
 
-#error{
-    display: none;
-    color: red;
-    font-size: 2.3em;
+#submitName,
+#opponentSubmit {
+	height: 60px !important;
+	border-radius: 25px;
+	justify-content: center;
+	padding: 5px;
+	background: linear-gradient(rgb(255, 72, 72), rgb(129, 15, 15));
+}
+
+#submitName:hover,
+#opponentSubmit:hover {
+	background: linear-gradient(rgb(252, 95, 95), rgb(120, 43, 43));
+	color: rgb(238, 238, 238);
+}
+
+#error {
+	display: none;
+	color: red;
+	font-size: 2.5em;
+}
+
+/* Some keywords taken and modified from W3 Schools*/
+.results {
+	display: none;
+	position: fixed;
+	z-index: 1001;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		to bottom right,
+		rgba(202, 238, 240, 0.4),
+		rgba(118, 191, 255, 0.4)
+	);
+}
+
+.results-content {
+	margin: auto;
+	margin-top: 0vh;
+	padding: 20px;
+	width: 90%;
+}
+
+.close {
+	color: #9e6464;
+	float: right;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.close:hover {
+	filter: invert(100%);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.close:active {
+	color: violet;
+	font-size: xx-large;
+}
+
+/* Table (for results) */
+#resultsTable {
+	width: 100%;
+	border-collapse: collapse;
+	background: linear-gradient(to top left, #fdfd99, #76bfff);
+}
+
+#resultsTable th,
+#resultsTable td {
+	padding: 8px;
+	text-align: center;
+	border-bottom: 1px solid rgb(0, 11, 84);
+}
+
+#resultsTable td :first-child {
+	border: 1px solid black;
+}
+
+#resultsTable th {
+	color: #333;
+}
+
+#resultsTable th :first {
+	color: red;
+}
+
+#openResults {
+	display: none;
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	background: linear-gradient(
+		rgba(255, 250, 108, 0.5),
+		rgba(202, 169, 113, 0.5)
+	);
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#openResults:hover {
+	background-color: rgba(248, 231, 178, 0.8);
+}
+
+#opponentContainer {
+	display: none;
+}
+
+#opponentProgress {
+	display: none;
+	width: 80%;
+	height: 20px;
+	margin: 20px auto;
+	border: 1px solid #ccc;
+	background-color: #f2f2f2;
+}
+
+#opponentBar {
+	height: 100%;
+	background-color: #ff0000;
+	border-radius: 15px;
+}
+
+#userProgress {
+	display: block;
+	width: 80%;
+	height: 20px;
+	margin: 20px auto;
+	border: 1px solid #ccc;
+	background-color: #f2f2f2;
+}
+
+#opponentCheckBox {
+	border-radius: 15px;
+}
+
+#opponentCheckBox:checked {
+	filter: drop-shadow(10px 10px 10px 3px red) !important;
+}
+
+.results :not(.results-content) {
+	filter: blur(95%);
 }
