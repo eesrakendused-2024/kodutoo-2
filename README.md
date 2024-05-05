@@ -3,6 +3,36 @@ Täiusta tunnis loodud typer'i rakendust.
 
 Tähtaeg: 05.05.2024 23:59
 
+# Karmen Klaasen
+
+## Link tööle - http://greeny.cs.tlu.ee/~karasen/finaltyper/typer.html
+
+Lisatud feature - sõnade trükkimisel kõlab trükkimise heli. 
+
+Pilt tulemuse osas ilmub pärast tulemuste tabeli vaatamist ehk kui mäng läbi saab ja tulemuste nupule vajutada ning see sulgeda, siis antakse kasutajale teada tema kiirus ja kuvatakse vastav pilt. 
+
+Kasutatud pildid:
+
+https://pixabay.com/illustrations/samuel-thumbs-up-laugh-cool-thumb-1233415/
+
+https://pixabay.com/vectors/trophy-icon-winner-win-cup-award-1674911/
+
+https://pixabay.com/illustrations/cup-victory-winner-award-gold-1010916/
+
+https://pixabay.com/vectors/rocket-spaceship-launch-fire-stars-7757105/
+
+https://pixabay.com/vectors/star-yellow-favorite-bookmark-297837/
+
+Kasutatud heli:
+
+https://www.chosic.com/download-audio/54458/
+
+Kasutatud font:
+
+https://fonts.google.com/selection/embed
+
+Lisaks kasutatud ka ChatGPT'd. 
+
 # Kõik nõuded täidetud, siis 20 punkti.
 
 1. Kasuta veebilehel mõnda Google fonti: https://fonts.google.com/
