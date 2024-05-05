@@ -8,6 +8,6 @@ function saveToFile($stringToSave){
     $object->last_modified = time();
     $object->content = $stringToSave;
     $jsonString = json_encode($object);
-    file_put_contents("database.txt", $jsonString);
+    file_put_contents("txtfiles/database.txt", $jsonString);
 }
 ?>
