@@ -4,31 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous" defer></script>
     <script src="typer.js" defer></script>
     <title>Typer</title>
 </head>
 <body>
     <div id="name">
+        <div><a href="https://www.tlu.ee">TLU Veebileht</a></div>
         <label for="nameValue">Palun sisesta oma nimi</label>
         <input type="text" id="nameValue">
         <label for="startingWordLength">Esimese sõna pikkus</label>
-        <input type="number" id="startingWordLength" max="31" value="3">
+        <input type="number" id="startingWordLength" min="2" max="31" value="3">
         <label for="wordsInGame">Sõnade arv mängus</label>
-        <input type="number" id="wordsInGame"max="31" value="5">
+        <input type="number" id="wordsInGame" min="2" max="31" value="5">
         <input type="button" value="Mängi" id="submitName">
         <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
     </div>
-    <div id="container">
-        <div id="wordDiv">Siia kuvame sõna</div>
-        <div id="score">Siia mängu tulemus</div>
-        <button id="restart">Restart</button>
-    </div>
-    <div id="info">
-        <h1>Mängu info</h1>
-        <p id="gameinfo"></p>
-    </div>
-    <div id="results">Tulemused</div>
-    
+    <div id="game">
+        <div id="container">
+            <div id="wordDiv">Siia kuvame sõna</div>
+            <div id="score">Siia mängu tulemus</div>
+            <button id="restart">Restart</button>
+        </div>
+        <div id="info">
+            <h1>Mängu info</h1>
+            <p id="gameinfoattempts"></p>
+            <p id="gameinfo"></p>
+            <button id="openModalBtn">Ava kõik tulemused</button>
+            <div><a id="link" href="https://github.com/eesrakendused-2024/kodutoo-2" target="_blank">Github</a></div>
+        </div>
+        <div id="myModal" class="modal" hidden>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Tulemused</h1>
+                <div id="results">Tulemused</div>
+            </div>
+        </div>
+        <div id="imageModal" class="modal" hidden>
+            <div class="modal-content">
+                <h2 id="level">Genius!</h2>
+                <span class="close2">&times;</span>
+                <img id="modalImage" src="" alt="Image">
+            </div>
+        </div>
+    </div>    
 </body>
 </html>
