@@ -1,3 +1,7 @@
+# Kristjan Petersell
+
+Link veebilehele: [https://www.tlu.ee/~sa1tama/kodutoo2/typer.html](https://www.tlu.ee/~sa1tama/kodutoo2/typer.html)
+
 # kodutoo-2
 Täiusta tunnis loodud typer'i rakendust.
 
