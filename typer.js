@@ -1,4 +1,3 @@
-//let playerName = prompt('Palun sisesta oma nimi')
 
 class Typer{
     constructor(){
@@ -13,6 +12,7 @@ class Typer{
         this.endTime = 0; // mängu lõpuaeg
         this.results = [];
         this.chars = 0;
+        this.lastGameTime = 0; // KT2 #8 uus feature - kui aeg tuli parim siis blingib punase ja kollase värvusega 2 x
 
         this.loadFromFile();
     }
@@ -72,7 +72,7 @@ class Typer{
     }
 
     startTyper(){
-        $('#restart, #score').hide();
+        $('#restart, #score, #showResultsBtn').hide(); // KT2 #2 modal akna nupu peitmine
         this.wordsTyped = 0;
         this.generateWords();
         this.updateInfo();
@@ -106,11 +106,9 @@ class Typer{
             this.drawWord();
             $('#score').html(this.name + ", sinu aeg oli: " + ((this.endTime-this.startTime)/1000).toFixed(2) + " sekundit.");
             this.saveResults();
-            $('#restart, #score').show();
+            $('#restart, #score, #showResultsBtn').show(); // KT2 #2 modal akna nupu näitamine, kasut https://www.w3schools.com/howto/howto_css_modals.asp
         }
     }
-
-
 
     generateWords(){
         for(let i = 0; i < this.wordsInGame; i++){
@@ -155,7 +153,9 @@ class Typer{
         }
 
         this.results.push(result);
-
+        // KT2 #8 uus funktsionaalsus, viimase aja säilitamine
+        this.lastGameTime = result.time;
+ 
         this.results.sort((a, b) => parseFloat(b.wordsPerMin) - parseFloat(a.wordsPerMin));
 
         this.showResults();
@@ -167,14 +167,131 @@ class Typer{
         );
     }
 
-    showResults(){
-        $('#results').html("");
-        for(let i = 0; i < this.results.length; i++){
-            if(i === 10){break;}
-            $("#results").append((i+1) + "." + this.results[i].name + "    " + this.results[i].time +
-            "    " + this.results[i].words + "    " + this.results[i].chars + "    " + this.results[i].wordsPerMin + "<br>");
+    showResults() {
+        // KT2 #4 kiirused https://www.typingpal.com/en/blog/good-typing-speed pluss mõned aeglasemad
+        const speeds = {
+            'Very slow': { value: 0, color: 'red' },
+            'Slow': { value: 100, color: 'red' },
+            'Close to average': { value: 150, color: 'black' },
+            'Average speed': { value: 200, color: 'black' },
+            'Above average speed': { value: 250, color: 'blue' },
+            'Productive speed': { value: 300, color: 'blue' },
+            'High speed': { value: 350, color: 'blue' },
+            'Competitive speed': { value: 600, color: 'blue' }
+        };
+    
+        let resultsContent = '<table>';
+    
+        resultsContent += '<tr><th>No</th><th>Name</th><th>Time</th><th>Words</th><th>Chars</th><th>CPM</th><th>Speed</th></tr>';
+    
+        for (let i = 0; i < this.results.length; i++) {
+            if (i === 10) { break; }
+            resultsContent += '<tr class="result-row';
+    
+            let speedCategory = '';
+            for (const category in speeds) {
+                if (this.results[i].wordsPerMin <= speeds[category].value) {
+                    speedCategory = category;
+                    break;
+                }
+            }
+    
+            resultsContent += ' result-' + speedCategory.toLowerCase().replace(/ /g, '-') + '">'; // KT2 #4 lisaks tekstile nädiatakse ka värvidega kas aeglane keskmine või kiire
+    
+            resultsContent += '<td>' + (i + 1) + '</td>';
+            resultsContent += '<td>' + this.results[i].name + '</td>';
+            resultsContent += '<td>' + this.results[i].time + '</td>';
+            resultsContent += '<td>' + this.results[i].words + '</td>';
+            resultsContent += '<td>' + this.results[i].chars + '</td>';
+            resultsContent += '<td>' + this.results[i].wordsPerMin + '</td>';
+            resultsContent += '<td style="color:' + speeds[speedCategory].color + '">' + speedCategory + '</td>'; 
+    
+            resultsContent += '</tr>';
         }
+    
+        resultsContent += '</table>';
+    
+        // Populate the modal content with resultsContent
+        document.getElementById('resultsContent').innerHTML = resultsContent;
+        
+        // KT2 #8 uus funktsionaalsus kiireimale blingitamine
+        console.log("showResult" + parseFloat(this.results[0].time) + " " + parseFloat(this.lastGameTime));
+        if (parseFloat(this.results[0].time) == parseFloat(this.lastGameTime)) {
+            console.log("Fastest: blink")
+//            document.getElementById('modalContent').classList.add('blink-red');
+            const blinkDuration = 1500; 
+            const blinkCount = 2; 
+    
+            for (let i = 0; i < blinkCount; i++) {
+                setTimeout(() => {
+                    document.documentElement.style.backgroundColor = 'red';
+                    setTimeout(() => {
+                        document.documentElement.style.backgroundColor = 'yellow';
+                    }, blinkDuration / 3*1);
+                    setTimeout(() => {
+                        document.documentElement.style.backgroundColor = ''; // reset                
+                    }, blinkDuration / 3*2);
+                }, i * blinkDuration);
+            }
+        }
+    }      
+}
+
+// KT2 #2 modal ChatGDP
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("showResultsBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 }
+
+// Add event listener for "Show Results" button
+document.getElementById("showResultsBtn").addEventListener("click", function() {
+    // Open the modal
+    console.log("Openning Modal");
+    document.getElementById("myModal").style.display = "block";
+    
+    console.log("Populate Modal");
+    // Populate the modal with results
+    document.getElementById("resultsContent").innerHTML = $('#results').html();
+});
+
+// Function to populate modal with results
+function populateModal() {
+    // Open the modal
+    document.getElementById("myModal").style.display = "block";
+
+    // Call showResults() to fetch results and populate modal
+    typer.showResults();
+}
+
+// Add event listener for "Show Results" button
+document.getElementById("showResultsBtn").addEventListener("click", populateModal);
+
+// KT2 #5 mobiilivaates tekstiväli, mingi jama
+window.addEventListener('DOMContentLoaded', (event) => {
+    if (window.innerWidth <= 600) {
+        const hiddenInput = document.getElementById('hiddenInput');
+        hiddenInput.focus();
+    }
+});
 
 let typer = new Typer();
