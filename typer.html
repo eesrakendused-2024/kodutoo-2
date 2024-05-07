@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Jura&family=Oswald&family=Freeman&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="typer.js" defer></script>
     <title>Typer</title>
 </head>
 <body>
@@ -23,12 +22,19 @@
         <div id="wordDiv">Siia kuvame sõna</div>
         <div id="score">Siia mängu tulemus</div>
         <button id="restart">Restart</button>
+        <button id="showResultsBtn">Show Results</button>
     </div>
-    <div id="info">
-        <h1>Mängu info</h1>
-        <p id="gameinfo"></p>
+    <input type="text" id="hiddenInput" style="position: absolute; opacity: 0;">
+    <!-- KT2 #2 modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="resultsContent">
+            </div>
+        </div>
     </div>
-    <div id="results">Tulemused</div>
-    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="typer.js" defer></script>
 </body>
 </html>
