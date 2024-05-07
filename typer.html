@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
     <link rel="stylesheet" href="style.css">
+	
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	
     <script src="typer.js" defer></script>
+	
     <title>Typer</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	</style>
 </head>
+
 <body>
     <div id="name">
         <label for="nameValue">Palun sisesta oma nimi</label>
@@ -19,16 +29,35 @@
         <input type="button" value="Mängi" id="submitName">
         <div id="error">Esimese sõna pikkus ja sõnu mängus summa ei saa ületada 31-te.</div>
     </div>
+
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
-        <div id="score">Siia mängu tulemus</div>
+		<div id="nextWordDiv">Siia kuvame järgmise sõna</div>
+        <div id="score">Siia kuvame mängu tulemuse</div>
+		<div id="description">Siia tuleb kirjeldus sinu kiiruse kohta</div>
         <button id="restart">Restart</button>
     </div>
+
     <div id="info">
         <h1>Mängu info</h1>
+			<p class="hiddenInfo">Mängu eesmärk on harjutada kiiresti kirjutamist</p>
+		</h1>
         <p id="gameinfo"></p>
     </div>
-    <div id="results">Tulemused</div>
-    
+
+	<div id="results">
+
+        <button id="resultButton">Näita tulemusi</button>
+
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+
+                <span class="close">&times;</span>
+                <p id="modal-results">Probleem tulemuste laadimisega</p>
+
+            </div>
+        </div>
+	</div>
 </body>
 </html>

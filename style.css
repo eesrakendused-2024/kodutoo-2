@@ -1,78 +1,206 @@
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
+	font-family: 'Inter', sans-serif !important;
 }
 
-#container{
-    width: 100vw;
+#container {
+    width: 100%;
     height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: beige;
+    background-color: #A8E6CF; 
     font-size: 3em;
 }
+.styled-image {
+    width: 100% !important;  
+    height: auto !important;
+    border-radius: 1em !important; 
+	z-index: 5 !important; 
+}
 
-#info, #results{
-    width: 100vw;
+#nameValue, #wordsInGame, #startingWordLength{
+    border: none !important;
+    border-radius: 5em !important;
+    color: #FFAAA5 !important;
+}
+
+#submitName{
+    color: #FFAAA5 !important;
+    background-color: #fff !important;
+    border: none;
+}
+
+@media only screen and (max-width: 768px) {
+	 #container 
+    {
+        height: 100vh; 
+        padding: 1.2em; 
+        font-size: 2em; 
+    }
+
+    #name input 
+    {
+        font-size: 1.5em;
+    }
+
+    .modal-content 
+    {
+        width: 90%; 
+        font-size: 1.2em;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+    } 
+	
+    #score, #description{
+		font-size: 1em;
+	}
+
+	#container{
+		height: 35vh;
+	}
+
+	.result-table {
+        font-size: 0.6em;
+    }
+
+	th, td {
+    border: 3px solid #fff;
+    padding: 0;
     text-align: center;
-    padding: 1em;
+    }
+}
+
+#nextWordDiv {
+	font-size: 40px;
+} 
+
+#startingWordLength, #wordsInGame, #nameValue {
+    width: 75%;
+}
+
+#description{
+    margin-top: -5em !important;
+}
+
+#description, #score {
+    background-color: #FFAAA5;
+    color: #fff;
+    margin-top: 3em;
+    border-radius: 3em;
+    padding: 0.4em;
+}
+
+#results {
+    background-color: #FFD3B6; 
+	padding-bottom: 2em;
+}
+
+#restart, #resultButton {
+    background-color: #DCEDC1; 
+    color: white;
+    font-size: 2em;
+    border-radius: 2em;
+    padding: 0.25em 1.75em;
+    margin-top: 3em;
+    border: 0;
+}
+
+#resultButton {
+    font-size: 1em !important;
 }
 
 #info{
-    background-color: lightblue;
+    color: #DCEDC1;
 }
 
-#results{
-    background-color: lightgray;
-}
-
-#restart{
-    background-color: black;
-    color:white;
-    font-size: 32px;
-    border-radius: 32px;
-    padding: 5px 25px;
-    margin-top: 3em;
-}
-
-#name{
+#name {
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background-color: black;
+    background-color: #FF8B94;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0;
 }
 
-#name input{
-    height: 50px;
-    font-size: 38px;
-    min-width: 300px;
-    margin: 10px;
+#name input {
+    height: 3em;
+    font-size: 2em;
+    min-width: 50%;
+    margin: 0.5em;
 }
 
-#name label{
+#name label {
     color: white;
-    font-size: 1.9em;
-    margin-top:20px;
+    font-size: 2em;
+    margin-top: 0;
 }
 
-#submitName{
-    height: 60px !important;
-    border-radius: 25px;
-    padding: 5px;
+#submitName {
+    height: 4em !important;
+    border-radius: 1.75em;
+    padding: 0.25em;
 }
 
-#submitName:hover{
-    opacity: 90%;
+#submitName:hover {
+  opacity: 75%;
+  text-decoration: underline;
 }
 
-#error{
-    display: none;
-    color: red;
-    font-size: 2.3em;
+#error {
+  display: none;
+  color: #FF8B94;
+  font-size: 2.5em;
+}
+
+.result-table {
+    margin: 0 auto;
+    border: 3px solid #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th, td {
+    border: 3px solid #fff;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #A8E6CF;
+    color: white;
+}
+
+#submitName:hover {
+	color: #FF8B94;
+	text-decoration: underline;
+} 
+
+#wordDiv:hover {
+	color: white;
+	text-decoration: underline;
+} 
+
+.hiddenInfo {
+  display: none;
+  background-color: #FFD3B6;
+  padding: 0;
+}
+
+#game:hover .hiddenInfo {
+  display: block;
+}
+
+tr:hover:not(:first-child){
+    text-decoration: underline;
+}
+
+td:hover {
+	text-decoration: underline;
 }
