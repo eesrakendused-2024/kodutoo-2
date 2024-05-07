@@ -4,41 +4,43 @@ body{
     margin:0;
     padding:0;
 }
-
 #gameTitle{
+    /*background-color: rgba(215, 195, 255);*/
     font-size: 38px;
     padding-left: 15px;
     font-weight: 500;
 
 }
 
+
 .dark-mode {
-    background-color: #222;
-    color: #fff; 
+    background-color: #222; /* Tume taustavärv */
+    color: #fff; /* Tume tekstivärv */
 }
 
 .dark-mode #gameTitle button,
 .dark-mode #name label {
-    color: #fff; 
+    color: #fff; /* Tume nupu tekstivärv */
 }
 
 .dark-mode #error {
-    color: #ff9999;
-
+    color: #ff9999; /* Punane tekst tumedas režiimis */
 }
 
 .dark-mode #container,
 .dark-mode #info,
 .dark-mode .gameTitle,
 .dark-mode #name  {
-    background-color: #333; 
+    background-color: #333; /* Tume taustavärv containeri jaoks */
 }
 
 .dark-mode .modal-content {
-    background-color: #333; 
-    color: #eee;
-} 
+    background-color: #333; /* Tume taustavärv modal-contenti jaoks */
+    color: #eee; /* Tume tekstivärv modal-contenti jaoks */
+}
 
+
+/* Lisa stiilid tumeda režiimi nupule */
 #darkModeToggle {
     background-color: #333;
     color: #fff;
@@ -61,6 +63,7 @@ body{
 
 
 #info, #results{
+    /*width: 100vw;*/
     border-radius: 5px;
     text-align: center;
     padding: 1em;
@@ -121,11 +124,17 @@ body{
     padding: 5px;
 }
 
+#submitName:hover{
+    opacity: 90%;
+}
+
 #error{
     display: none;
     color: red;
     font-size: 2.3em;
 }
+
+
 
 #showResults {
     font-family: 'Prompt', sans-serif;
@@ -143,9 +152,14 @@ body{
     width: 100%;
 }
 
+#showResults:hover{
+    opacity: 90%;
+}
+
 #closeResults {
     font-family: 'Prompt', sans-serif;
     height: 50px;
+    /*background-color: #417f41dc;*/
     border: none;
     color: black;
     padding: 10px 20px;
@@ -157,32 +171,41 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
 }
 
+#closeResults:hover{
+    opacity: 90%;
+}
+
+/* Скрыть модальное окно при загрузке страницы */
 .modal {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; 
-    max-width: 600px; 
+    width: 80%; /* Устанавливаем ширину модального окна */
+    max-width: 600px; /* Максимальная ширина модального окна */
 }
-
+  
+  /* Modal Header */
 .modal-header {
     padding: 10px 16px;
     background-color: #cbb2ff;
     color: black;
 }
   
+  /* Modal Body */
 .modal-body {
     padding: 10px 16px;
 }
   
+  /* Modal Footer */
 .modal-footer {
     padding: 10px 16px;
     background-color: #cbb2ff;
     color: white;
 }
   
+  /* Modal Content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -191,7 +214,13 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s;
-    border-radius: 10px;
+    border-radius: 10px; /* Добавляем закругление углов для модального окна */
+}
+  
+  /* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 #scorePic img {
@@ -203,53 +232,15 @@ body{
     
 }
 
-/*Pseudoklassid variantid võetud siit: https://www.w3schools.com/css/css_pseudo_classes.asp*/
-table tr:nth-child(odd) {
-    background-color: #f3f1f1;
-}
-
-#showResults:hover{
-    opacity: 90%;
-}
-
-#closeResults:hover{
-    opacity: 90%;
-}
-
-#submitName:active {
-    background-color: rgba(168, 160, 160, 0.8);
-}
-
-#name label::first-letter {
-    font-weight: 700;
-}
-
-#name input:focus {
-    border: 5px solid #b35fc4; 
-}
-
-.dark-mode tr:nth-child(odd) {
-    background-color: #eee;
-    color: #333;
-}
-
-/*Modal box võetud siit: https://www.w3schools.com/howto/howto_css_modals.asp*/
-@keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-}
-
 #myModal .modal-content table {
-    border-collapse: separate;
+    border-collapse: separate; /* Eraldatud piirjooned */
 }
 
 #myModal .modal-content th,
 #myModal .modal-content td {
-    padding: 10px;
-    padding-left: 20px;
+    padding: 10px; /* Polsterdus 10px */
 }
 
-/*Media query võetud siit: https://www.w3schools.com/css/css_rwd_mediaqueries.asp*/
 @media only screen and (max-width: 600px) {
 
     body {
@@ -275,6 +266,7 @@ table tr:nth-child(odd) {
     }
 
     #info, #results{
+        /*width: 100vw;*/
         border-radius: 5px;
         text-align: center;
         padding: 1em;
@@ -294,10 +286,29 @@ table tr:nth-child(odd) {
     }
 
     .modal-body {
-        padding: 10px; 
-        max-height: 60vh; 
-        overflow-y: auto; 
-        font-size: 16px;
+        padding: 10px; /* Adjust padding for content */
+        max-height: 60vh; /* Limit max height for smaller screens */
+        overflow-y: auto; /* Add scroll for overflow content */
+        font-size: 16px; /* Adjust font size for better readability */
+    }
+    
+    button:active {
+        transform: translateY(2px);
+    }
+    
+    /* First-child pseudo-class */
+    ul li:first-child {
+        color: red;
+    }
+    
+    /* Last-child pseudo-class */
+    ul li:last-child {
+        color: green;
+    }
+    
+    /* Nth-child pseudo-class */
+    table tr:nth-child(odd) {
+        background-color: #f2f2f2;
     }
 }
 

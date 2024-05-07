@@ -9,7 +9,10 @@
     <title>Typer</title>
 </head>
 <body>
-    <div id="name">
+    <div id="gameTitle">Typer
+      <button id="darkModeToggle">Tume režiim</button> 
+    </div> 
+    <div id="name" class="game-container">
         <label for="nameValue">Palun sisesta oma nimi</label>
         <input type="text" id="nameValue">
         <label for="startingWordLength">Esimese sõna pikkus</label>
@@ -22,13 +25,44 @@
     <div id="container">
         <div id="wordDiv">Siia kuvame sõna</div>
         <div id="score">Siia mängu tulemus</div>
-        <button id="restart">Restart</button>
+        <div id="scorePic"></div> 
+        <button id="restart" class="restart-button">Restart</button>
     </div>
+
     <div id="info">
         <h1>Mängu info</h1>
         <p id="gameinfo"></p>
+
+        <button id="showResults">Vaata tulemusi</button>  
+        <!-- Modali osa võetud siit  https://www.w3schools.com/howto/howto_css_modals.asp -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2>Tulemused</h2>
+              </div>
+              <div class="modal-body" id="resultsContainer">
+                <!-- Tabeli koostamise osa võetud siit: https://www.w3schools.com/html/html_tables.asp -->
+                  <table id="resultsTable"> 
+                      <thead>
+                          <tr>
+                              <th>Number</th>
+                              <th>Nimi</th>
+                              <th>Aeg</th>
+                              <th>Sõnade arv</th>
+                              <th>Tähemärgid</th>
+                              <th>Punktid</th>
+                          </tr>
+                      </thead>
+                      <tbody id="results"></tbody>
+                  </table>
+                <!-- Tabeli koostamise osa lõpp -->
+              </div>
+              <div class="modal-footer">
+                  <button id="closeResults">Sulge</button>
+              </div>
+          </div>
+      </div>
+      <!-- Modali osa lõpp -->
     </div>
-    <div id="results">Tulemused</div>
-    
 </body>
 </html>
