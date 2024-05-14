@@ -1,78 +1,76 @@
-body{
-    margin:0;
-    padding:0;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 
-#container{
-    width: 100vw;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: beige;
-    font-size: 3em;
+#name {
+  text-align: center;
+  margin-top: 50px;
 }
 
-#info, #results{
-    width: 100vw;
-    text-align: center;
-    padding: 1em;
+#nameValue, #startingWordLength, #wordsInGame {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-#info{
-    background-color: lightblue;
+#submitName {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#results{
-    background-color: lightgray;
+#error {
+  color: #FF0000;
+  text-align: center;
+  display: none;
 }
 
-#restart{
-    background-color: black;
-    color:white;
-    font-size: 32px;
-    border-radius: 32px;
-    padding: 5px 25px;
-    margin-top: 3em;
+#container {
+  text-align: center;
+  margin-top: 50px;
 }
 
-#name{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+#wordDiv {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-#name input{
-    height: 50px;
-    font-size: 38px;
-    min-width: 300px;
-    margin: 10px;
+#score {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-#name label{
-    color: white;
-    font-size: 1.9em;
-    margin-top:20px;
+#restart {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#submitName{
-    height: 60px !important;
-    border-radius: 25px;
-    padding: 5px;
+#info {
+  text-align: center;
+  margin-top: 50px;
 }
 
-#submitName:hover{
-    opacity: 90%;
-}
-
-#error{
-    display: none;
-    color: red;
-    font-size: 2.3em;
+#results {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
 }

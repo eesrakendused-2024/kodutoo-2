@@ -2,15 +2,15 @@
 
 class Typer{
     constructor(){
-        this.name = "Anonüümne"; //kasutaja nimi, mida ta peab mängu alguses sisestam
-        this.wordsInGame = 3; //mitu sõna peab trükkima, et mäng lõppeks
-        this.wordsTyped = 0; //mitu sõna on trükitud
+        this.name = "AnonÃ¼Ã¼mne"; //kasutaja nimi, mida ta peab mÃ¤ngu alguses sisestam
+        this.wordsInGame = 3; //mitu sõna peab trÃ¼kkima, et mÃ¤ng lÃµppeks
+        this.wordsTyped = 0; //mitu sõna on trÃ¼kitud
         this.startingWordLength = 3; //esimese sõna pikkus
         this.words = []; //need sõnad, mis tulevad lemmade failist
-        this.typeWords = []; //need sõnad, mida hakkame trükkima
-        this.word = "aabits"; //sõna, mida peab trükkima
-        this.startTime = 0; //mängu algusaeg
-        this.endTime = 0; // mängu lõpuaeg
+        this.typeWords = []; //need sõnad, mida hakkame trÃ¼kkima
+        this.word = "aabits"; //sõna, mida peab trÃ¼kkima
+        this.startTime = 0; //mÃ¤ngu algusaeg
+        this.endTime = 0; // mÃ¤ngu lÃµpuaeg
         this.results = [];
         this.chars = 0;
 
@@ -85,7 +85,7 @@ class Typer{
     }
 
     shortenWord(keypressed){
-        //console.log(keypressed);
+
 
         if(this.word.charAt(0) != keypressed){
             document.getElementById('container').style.backgroundColor = "lightpink";
@@ -117,7 +117,7 @@ class Typer{
             const wordLength = this.startingWordLength + i;
             const randomWord = Math.round(Math.random() * 
             this.words[wordLength].length);
-            //console.log(wordLength, randomWord);
+    
 
             this.typeWords[i] = this.words[wordLength][randomWord];
         }
@@ -142,7 +142,7 @@ class Typer{
             console.log(this.chars);
         }
         
-        let wordsPerMinute = ((this.chars/((this.endTime-this.startTime)/1000)) * 60).toFixed(0);
+        let wordsPerMinute = (this.chars/((this.endTime-this.startTime)/1000)*60).toFixed(0);
         console.log(wordsPerMinute);
 
 
@@ -171,8 +171,8 @@ class Typer{
         $('#results').html("");
         for(let i = 0; i < this.results.length; i++){
             if(i === 10){break;}
-            $("#results").append((i+1) + "." + this.results[i].name + "    " + this.results[i].time +
-            "    " + this.results[i].words + "    " + this.results[i].chars + "    " + this.results[i].wordsPerMin + "<br>");
+            $("#results").append((i+1) + "." + this.results[i].name + " " + this.results[i].time +
+            " " + this.results[i].words + " " + this.results[i].chars + " " + this.results[i].wordsPerMin + "<br>");
         }
     }
 }
